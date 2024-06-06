@@ -28,31 +28,37 @@
                 <div class="w-full max-w-lg bg-white shadow-md rounded p-6 mb-4">
                     <div class="btn-switch mx-6 m-6 flex justify-between space-x-6">
                         <div class="left flex justify-center w-1/2 border-solid border-b border-gray-700" id="loginForm">
-                            <button type="button" id="loginButton" class="text-gray font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Login</button>
+                            <button type="button" id="loginButton" class="text-gray font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2" onclick="switchActiveButton('login', 'register')">Login</button>
                         </div>
                         <div class="right flex justify-center w-1/2" id="registerForm">
-                            <button type="button" id="registerButton" class="text-white w-full bg-gray-700 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Register</button>
+                            <button type="button" id="registerButton" class="text-white w-full bg-gray-700 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2" onclick="switchActiveButton('register', 'login')">Register</button>
                         </div>
                     </div>
 
                     <form id="loginData">
                         <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                                    First Name
+                            <div class="w-full px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
+                                    Email
                                 </label>
-                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
-                                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-email" type="text" placeholder="Put your email here.">
                             </div>
                         </div>
                         <div class="flex flex-wrap -mx-3 mb-6">
                             <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                                Password
-                            </label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="******************">
-                            <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                    Password
+                                </label>
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="Put your password here.">
                             </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                                Sign In
+                            </button>
+                            <button class="inline-block align-baseline font-bold text-sm text-grey-500 hover:text-grey-800" type="button" onclick="switchActiveButton('register', 'login')">
+                                Don't have account? Sign up.
+                            </button>
                         </div>
                     </form>
                     
@@ -81,7 +87,7 @@
                             <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
                             </div>
                         </div>
-                        <div class="flex flex-wrap -mx-3 mb-2">
+                        <div class="flex flex-wrap -mx-3 mb-6">
                             <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                                 City
@@ -110,6 +116,15 @@
                             <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210">
                             </div>
                         </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <button class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                                Sign In
+                            </button>
+                            <button class="inline-block align-baseline font-bold text-sm text-grey-500 hover:text-grey-800" type="button" onclick="switchActiveButton('login', 'register')">
+                                Already register an account? Login.
+                            </button>
+                        </div>
                     </form>
                 </div>
                 
@@ -122,14 +137,6 @@
     </body>
 
     <script>
-        document.getElementById('loginButton').addEventListener('click', function() {
-            switchActiveButton('login', 'register');
-        });
-
-        document.getElementById('registerButton').addEventListener('click', function() {
-            switchActiveButton('register', 'login');
-        });
-
         function switchActiveButton(activeId, inactiveId) {
             //toggle style button
             document.getElementById(activeId + "Button").classList.add('text-gray');
