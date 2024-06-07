@@ -3,11 +3,11 @@
         <div class="flex items-center space-x-6 rtl:space-x-reverse">
             {{-- <a href="tel:5541251234" class="text-sm  text-gray-500  hover:underline">(555) 412-1234</a>
             <a href="#" class="text-sm  text-blue-600 -500 hover:underline">Login</a> --}}
+            <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-10 h-10 rounded-full cursor-pointer" src="https://img.freepik.com/premium-vector/female-user-profile-avatar-is-woman-character-screen-saver-with-emotions_505620-617.jpg" alt="User dropdown">
 
-            <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start"
-                class="w-10 h-10 rounded-full cursor-pointer"
-                src="https://img.freepik.com/premium-vector/female-user-profile-avatar-is-woman-character-screen-saver-with-emotions_505620-617.jpg"
-                alt="User dropdown">
+            @auth
+                {{Auth::user()->name}}
+            @endauth
 
             <!-- Dropdown menu -->
             <div id="userDropdown"
