@@ -1,128 +1,166 @@
-@extends('app')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@section('content')
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Nilai.in</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
+
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+    <link href="{{ asset('vendor/bladewind/css/animate.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('vendor/bladewind/css/bladewind-ui.min.css') }}" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-gray-100 flex">
     <div class="flex-1">
-        <div class="flex justify-center items-center">
-            <div class="w-full max-w-lg bg-white shadow-md rounded p-6 mb-4">
-                <div class="btn-switch mx-6 m-6 flex justify-between space-x-6">
-                    <div class="left flex justify-center w-1/2 border-solid border-b border-gray-700" id="loginForm">
-                        <button type="button" id="loginButton" class="text-gray font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2" onclick="switchActiveButton('login', 'register')">Login</button>
-                    </div>
-                    <div class="right flex justify-center w-1/2" id="registerForm">
-                        <button type="button" id="registerButton" class="text-white w-full bg-gray-700 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2" onclick="switchActiveButton('register', 'login')">Register</button>
+        <div class="flex justify-center items-center h-screen">
+            <section id="loginData">
+                <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+                    <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 ">
+                        <img class="w-11 h-6 mr-2" src="https://w7.pngwing.com/pngs/683/964/png-transparent-grading-in-education-test-computer-icons-student-score-miscellaneous-text-logo.png"
+                            alt="logo">
+                        Nilai.in
+                    </a>
+                    <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+                        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                            <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+                                Sign in to your account
+                            </h1>
+                            <form class="space-y-4 md:space-y-6" action="/login" method="POST">
+                                {{ csrf_field() }}
+                                <div>
+                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your
+                                        email</label>
+                                    <input type="email" name="email" id="email"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                        placeholder="name@company.com" required="">
+                                </div>
+                                <div>
+                                    <label for="password"
+                                        class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                                    <input type="password" name="password" id="password-login" placeholder="••••••••"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                        required="">
+                                </div>
+                                <button type="submit"
+                                    class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign
+                                    in</button>
+                                <p class="text-sm font-light text-gray-500">
+                                    Don’t have an account yet? <button id="login"
+                                        class="font-medium text-primary-600 hover:underline">Sign
+                                        up</button>
+                                </p>
+                            </form>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <form action="/login" method="POST" id="loginData">
-                    {{ csrf_field() }}
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3 mb-6 md:mb-0">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
-                                Email
-                            </label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="email" type="text" placeholder="Put your email here." name="email">
+            <section class="hidden" id="registerData">
+                <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+                    <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 ">
+                        <img class="w-11 h-6 mr-2" src="https://w7.pngwing.com/pngs/683/964/png-transparent-grading-in-education-test-computer-icons-student-score-miscellaneous-text-logo.png"
+                            alt="logo">
+                        Nilai.in
+                    </a>
+                    <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+                        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 hidden" id="alert" role="alert">
+                                <span class="font-medium">Danger alert!</span> Passwords do not match!
+                            </div>
+                            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 hidden" id="success" role="alert">
+                                <span class="font-medium">Success alert!</span> Successfully Registered.
+                            </div>
+                            <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+                                Sign in to your account
+                            </h1>
+                            <form class="space-y-4 md:space-y-6" id="registerForm" action="/register" method="POST">
+                                {{ csrf_field() }}
+                                <div>
+                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your
+                                        email</label>
+                                    <input type="email" name="email" id="email"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                        placeholder="name@company.com" required="">
+                                </div>
+                                <div>
+                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Your
+                                        name</label>
+                                    <input type="text" name="name" id="name"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                        placeholder="John" required="">
+                                </div>
+                                <div>
+                                    <label for="password"
+                                        class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                                    <input type="password" name="password" id="password" placeholder="••••••••"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                        required="">
+                                </div>
+                                <div>
+                                    <label for="password_confirmation"
+                                        class="block mb-2 text-sm font-medium text-gray-900">Password
+                                        Confirmation</label>
+                                    <input type="password" name="password_confirmation"
+                                        id="password_confirmation" placeholder="••••••••"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                        required="">
+                                </div>
+                                <button type="submit" id="submit"
+                                    class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Create
+                                    Account</button>
+                                <p class="text-sm font-light text-gray-500">
+                                    Already have an account? <button id="register"
+                                        class="font-medium text-primary-600 hover:underline">Sign
+                                        in</button>
+                                </p>
+                            </form>
                         </div>
                     </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="password">
-                                Password
-                            </label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="password" type="password" placeholder="Put your password here." name="password">
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <button class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                            Sign In
-                        </button>
-                        <button class="inline-block align-baseline font-bold text-sm text-grey-500 hover:text-grey-800" type="button" onclick="switchActiveButton('register', 'login')">
-                            Don't have account? Sign up.
-                        </button>
-                    </div>
-
-                    {{-- @if ($errors->any())
-                        <div>{{$errors->first()}}</div>
-                    @endif --}}
-                </form>
-                
-                <form action="/register" method="POST" id="registerData" class="hidden">
-                    {{ csrf_field() }}
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full md:w-full px-3 mb-6 md:mb-0">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
-                                Email
-                            </label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="email" type="text" placeholder="Put your email here." name="email">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full md:w-full px-3 mb-6 md:mb-0">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
-                                Name
-                            </label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="name" type="text" placeholder="Put your name here." name="name">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="password">
-                                Password
-                            </label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="password" type="password" placeholder="Put your password here." name="password">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="password_confirmation">
-                                Password Confirmation
-                            </label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="password_confirmation" type="password" placeholder="Put your password here again." name="password_confirmation">
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <button class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                            Create Account
-                        </button>
-                        <button class="inline-block align-baseline font-bold text-sm text-grey-500 hover:text-grey-800" type="button" onclick="switchActiveButton('login', 'register')">
-                            Already have an account? Sign in.
-                        </button>
-                    </div>
-                </form>
-            </div>
-            
-
-            
+                </div>
+            </section>
         </div>
     </div>
 
     <script>
-        function switchActiveButton(activeId, inactiveId) {
-            //toggle style button
-            document.getElementById(activeId + "Button").classList.add('text-gray');
-            document.getElementById(activeId + "Button").classList.remove('text-white');
-            document.getElementById(activeId + "Button").classList.remove('bg-gray-700');
-            document.getElementById(activeId + "Button").classList.remove('hover:bg-gray-800');
+        $(document).ready(function() {
+            $("#register").on('click', function() {
+                $("#registerData").hide();
+                $("#loginData").show();
+            });
 
-            document.getElementById(inactiveId + "Button").classList.remove('text-gray');
-            document.getElementById(inactiveId + "Button").classList.add('text-white');
-            document.getElementById(inactiveId + "Button").classList.add('w-full');
-            document.getElementById(inactiveId + "Button").classList.add('bg-gray-700');
-            document.getElementById(inactiveId + "Button").classList.add('hover:bg-gray-800');
-            document.getElementById(inactiveId + "Button").classList.add('hover:bg-gray-800');
+            $("#login").on('click', function() {
+                $("#loginData").hide();
+                $("#registerData").show();
+            });
 
-            
-            //toggle style div
-            document.getElementById(activeId + "Form").classList.add('border-solid');
-            document.getElementById(activeId + "Form").classList.add('border-b');
-            document.getElementById(activeId + "Form").classList.add('border-gray-700');
-
-            document.getElementById(inactiveId + "Form").classList.remove('border-solid');
-            document.getElementById(inactiveId + "Form").classList.remove('border-b');
-            document.getElementById(inactiveId + "Form").classList.remove('border-gray-700');
-
-            document.getElementById(inactiveId + "Data").classList.add('hidden');
-            document.getElementById(activeId + "Data").classList.remove('hidden');
-        }
+            $("#submit").on('click', function(event) {
+                var password = $("#password").val();
+                var confirmPassword = $("#password_confirmation").val();
+                console.log(password, confirmPassword);
+                if (password !== confirmPassword) {
+                    event.preventDefault();
+                    $('#alert').show();
+                } else {
+                    $('#alert').hide();
+                    $('#success').show();
+                    $("#registerForm").submit();
+                } 
+            });
+        });
     </script>
+    <script src="{{ asset('vendor/mkocansey/bladewind/js/helpers.js') }}"></script>
+</body>
 
-@endsection
+</html>

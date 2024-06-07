@@ -21,7 +21,7 @@ class AuthController extends Controller
         'password'=> $request->password]);
 
         if($valid){
-            return redirect("/");
+            return redirect("/dashboard");
         }else{
             return redirect()->back()->withErrors('Authentication Error');
         }
@@ -52,7 +52,7 @@ class AuthController extends Controller
         $user->save();
 
         Auth::attempt(['email'=> $request->email, 'password'=> $request->password]);
-        return redirect("/");
+        return redirect("/dashboard");
     }
 
 
