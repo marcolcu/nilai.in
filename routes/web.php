@@ -30,4 +30,5 @@ Route::get('/login', function () {
 
 Route::get('/login', [AuthController::class, 'getLogin']);
 Route::post('/login', [AuthController::class, 'postLogin']);
+Route::post('/register', [AuthController::class, 'postRegister']);
 Route::get('/logout', [AuthController::class, 'getLogout']);
