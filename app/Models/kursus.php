@@ -14,4 +14,16 @@ class Kursus extends Model
         'jadwalselesai',
     ];
     use HasFactory;
+    public function materi()
+    {
+        return $this->hasMany(Materi::class);
+    }
+    public function penggunaankursus()
+    {
+        return $this->hasMany(PenggunaanKursus::class);
+    }
+    public function ujian()
+    {
+        return $this->hasMany(Ujian::class);
+    }
 }

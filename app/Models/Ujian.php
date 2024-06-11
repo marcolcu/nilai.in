@@ -17,4 +17,8 @@ class Ujian extends Model
         'kursus_id',
     ];
     use HasFactory;
+    public function kursus()
+    {
+        return $this->belongsTo(Kursus::class);
+    }
 }
