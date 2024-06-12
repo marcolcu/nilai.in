@@ -28,9 +28,9 @@
                         clip-rule="evenodd"></path>
                 </svg>
             </div>
-            E-Commerce
+            About
         </a>
-        <div role="button"
+        <a href="/courses" role="button"
             class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
             <div class="grid mr-4 place-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
@@ -40,14 +40,14 @@
                         clip-rule="evenodd"></path>
                 </svg>
             </div>
-            Inbox
+            Courses
             <div class="grid ml-auto place-items-center justify-self-end">
                 <div
                     class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-full select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900">
                     <span class="">14</span>
                 </div>
             </div>
-        </div>
+        </a>
         <div role="button"
           class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
           <div class="grid mr-4 place-items-center">
