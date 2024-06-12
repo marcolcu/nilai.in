@@ -23,6 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
     <script src="https://kit.fontawesome.com/5c956c090f.js" crossorigin="anonymous"></script>
+    {{-- <script src="{{ asset('vendor/mkocansey/bladewind/js/helpers.js') }}"></script> --}}
 </head>
 
 <body class="bg-gray-100 flex">
@@ -58,7 +59,6 @@
     </div>
 
     @yield('js')
-    <script src="{{ asset('vendor/mkocansey/bladewind/js/helpers.js') }}"></script>
 </body>
 
 </html>

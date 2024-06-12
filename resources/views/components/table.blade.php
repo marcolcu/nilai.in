@@ -156,104 +156,106 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    Product name
+                    ID
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    <div class="flex items-center">
-                        Color
-                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                            </svg></a>
-                    </div>
+                    Nama
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    <div class="flex items-center">
-                        Category
-                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                            </svg></a>
-                    </div>
+                    Deskripsi
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    <div class="flex items-center">
-                        Price
-                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                            </svg></a>
-                    </div>
+                    Jadwal Mulai
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    <span class="sr-only">Edit</span>
+                    Jadwal Selesai
                 </th>
             </tr>
         </thead>
-        <tbody>
-            <tr class="bg-white border-b">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">
-                    Silver
-                </td>
-                <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white border-b">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Microsoft Surface Pro
-                </th>
-                <td class="px-6 py-4">
-                    White
-                </td>
-                <td class="px-6 py-4">
-                    Laptop PC
-                </td>
-                <td class="px-6 py-4">
-                    $1999
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Magic Mouse 2
-                </th>
-                <td class="px-6 py-4">
-                    Black
-                </td>
-                <td class="px-6 py-4">
-                    Accessories
-                </td>
-                <td class="px-6 py-4">
-                    $99
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
+        <tbody id="table-body-user">
         </tbody>
     </table>
 </div>
 
-<script>
-    $(document).ready(function() {
-        setTimeout(() => {
-            $('#skeleton-loader-table').hide();
-            $('#main-content-table').show();
-        }, 100);
-    });
-</script>
+@section('js-table')
+    <script>
+        $(document).ready(function() {
+            var currentPage = 1;
+            var entriesPerPage = 8;
+            var allData = [];
+
+            table_courses();
+            
+            function table_courses() {
+                $('#table-body-user').empty();
+                $.ajax({
+                    url: "api/kursuses",
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(response) {
+                        allData = response["kursuses: "];
+                        if (allData && allData.length > 0) {
+                            renderTable(currentPage);
+                        } else {
+                            var row = `
+                            <tr>
+                                <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
+                                    No data found
+                                </th>
+                            </tr>
+                            `;
+                            $('#table-body-user').append(row);
+                        }
+                        $('#skeleton-loader-table').hide();
+                        $('#table-body-user').show();
+                        $('#main-content-table').show();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                        var row = `
+                        <tr>
+                            <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
+                                Fetching data error..
+                            </th>
+                        </tr>
+                        `;
+                        $('#table-body-user').append(row);
+                        $('#skeleton-loader-table').hide();
+                        $('#table-body-user').show();
+                    }
+                });
+            }
+            
+            function renderTable(page) {
+                $('#table-body-user').empty();
+                var start = (page - 1) * entriesPerPage;
+                var end = start + entriesPerPage;
+                var paginatedData = allData.slice(start, end);
+                
+                $.each(paginatedData, function(index, item) {
+                        var row = `
+                        <tr>
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                ${item.id}
+                            </th>
+                            <td class="px-6 py-4">
+                                ${item.nama}
+                            </td>
+                            <td class="px-6 py-4">
+                                ${item.deskripsi}
+                            </td>
+                            <td class="px-6 py-4">
+                                ${moment(item.jadwalmulai).format('DD-MM-YYYY')}
+                            </td>
+                            <td class="px-6 py-4">
+                                ${moment(item.jadwalselesai).format('DD-MM-YYYY')}
+                            </td>
+                        </tr>
+                    `;
+                    $('#table-body-user').append(row);
+                });
+            }
+        });
+    </script>
+@endsection
