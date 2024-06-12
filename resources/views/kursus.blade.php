@@ -198,7 +198,27 @@
             </tr>
         </tbody>
     </table>
-</div>
+    </div>
+        <div id="pagination-container" class="flex flex-col items-center mt-4">
+            <!-- Help text -->
+            <span id="pagination-info" class="text-sm text-gray-700">
+                Showing <span id="start-entry" class="font-semibold text-gray-900">1</span> to <span
+                    id="end-entry" class="font-semibold text-gray-900">10</span> of <span id="total-entries"
+                    class="font-semibold text-gray-900">100</span> Entries
+            </span>
+            <!-- Buttons -->
+            <div class="inline-flex mt-2 xs:mt-0">
+                <button id="prev-button"
+                    class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 rounded-s hover:bg-gray-900"
+                    disabled>
+                    Prev
+                </button>
+                <button id="next-button"
+                    class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 border-0 border-s border-gray-700 rounded-e hover:bg-gray-900">
+                    Next
+                </button>
+            </div>
+        </div>
 
 <div id="kursus-modal" tabindex="-1" aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -413,8 +433,8 @@
                 <span class="sr-only">Close modal</span>
             </button>
             <div class="p-4 md:p-5 text-center">
-                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 20 20">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
@@ -436,270 +456,327 @@
 @section('js')
 <script>
     $(document).ready(function() {
-            $('#skeleton-loader-table-user').show();
-            $('#table-body-user').hide();
-    
+        var currentPage = 1;
+        var entriesPerPage = 10;
+        var totalEntries = 0;
+        
+        $('#skeleton-loader-table-user').show();
+        $('#table-body-user').hide();
+
+        table_courses();
+
+        $(document).on('kursusAdded', function() {
+            $('#table-body-user').empty();
             table_courses();
-    
-            $(document).on('kursusAdded', function() {
-                $('#table-body-user').empty();
-                table_courses();
-            });
-            
-            $(document).on('click', '.save', function(e) {
-                e.stopPropagation();
-                let datas = {};
-                let isValid = true;
+        });
+        
+        $(document).on('click', '.save', function(e) {
+            e.stopPropagation();
+            let datas = {};
+            let isValid = true;
 
-                $('#addCourse').find('.form-control').each(function() {
-                    const inputType = $(this).attr('type');
-                    const inputValue = $(this).val();
-                    const inputName = $(this).attr('name');
+            $('#addCourse').find('.form-control').each(function() {
+                const inputType = $(this).attr('type');
+                const inputValue = $(this).val();
+                const inputName = $(this).attr('name');
 
-                    if (!inputValue) {
-                        isValid = false;
-                    }
+                if (!inputValue) {
+                    isValid = false;
+                }
 
-                    if (inputName === 'jadwalmulai' || inputName === 'jadwalselesai') {
-                        const dateValue = moment(inputValue, 'MM/DD/YYYY').format('YYYY-MM-DD');
-                        datas[inputName] = dateValue;
-                    } else {
-                        datas[inputName] = inputValue;
-                    }
-                });
-
-                if (isValid) {
-                    $('.alert-kursus').addClass('hidden');
-                    $.ajax({
-                        url: "/api/kursuses/create",
-                        type: "POST",
-                        data: JSON.stringify(datas),
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function(response) {
-                            $('.btn-close').click();
-                            $('#addCourse').find('.form-control').val('');
-                            table_courses();
-                        },
-                        error: function(errors) {
-                            console.error(errors);
-                        }
-                    });
+                if (inputName === 'jadwalmulai' || inputName === 'jadwalselesai') {
+                    const dateValue = moment(inputValue, 'MM/DD/YYYY').format('YYYY-MM-DD');
+                    datas[inputName] = dateValue;
                 } else {
-                    $('.alert-kursus').removeClass('hidden');
+                    datas[inputName] = inputValue;
                 }
             });
 
-            $(document).on('click', '.update', function(e) {
-                e.stopPropagation();
-                let id = $(this).data('id');
-                let datas = {};
-                let isValid = true;
-
-                $('#editCourse').find('.form-control').each(function() {
-                    const inputType = $(this).attr('type');
-                    const inputValue = $(this).val();
-                    const inputName = $(this).attr('name');
-
-                    if (!inputValue) {
-                        isValid = false;
-                    }
-
-                    if (inputName === 'jadwalmulai' || inputName === 'jadwalselesai') {
-                        const dateValue = moment(inputValue, 'MM/DD/YYYY').format('YYYY-MM-DD');
-                        datas[inputName] = dateValue;
-                    } else {
-                        datas[inputName] = inputValue;
-                    }
-                });
-
-                if (isValid) {
-                    $('.alert-kursus').addClass('hidden');
-                    $.ajax({
-                        url: "/api/kursuses/update/" + id,
-                        type: "POST",
-                        data: JSON.stringify(datas),
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function(response) {
-                            $('.btn-close-edit').click();
-                            $('#editCourse').find('.form-control').val('');
-                            table_courses();
-                        },
-                        error: function(errors) {
-                            console.error(errors);
-                        }
-                    });
-                } else {
-                    $('.alert-kursus').removeClass('hidden');
-                }
-            });
-
-            $('.form-control').on('input', function() {
-                let isValid = true;
-                $('#addCourse').find('.form-control').each(function() {
-                    if (!$(this).val()) {
-                        isValid = false;
-                    }
-                });
-
-                if (isValid) {
-                    $('.alert-kursus').addClass('hidden');
-                }
-            });
-
-            $(document).on('click', '.edit-button', function() {
-                const courseId = $(this).data('id');
-                $('.update').data('id', courseId);
-                openEditModal(courseId);
-            });
-
-            $(document).on('click', '.delete-button', function() {
-                const courseId = $(this).data('id');
-                $('.delete-course').data('id', courseId);
-                $('.button-delete-open').click();
-            });
-
-            $(document).on('click', '.btn-close-edit', function() {
-                $('#editCourse').find('.form-control').val('');
-            });
-
-            $(document).on('click', '.delete-course', function() {
-                let id = $(this).data('id');
-                openDeleteModal(id);
-            });
-
-            function openDeleteModal(id) {
+            if (isValid) {
+                $('.alert-kursus').addClass('hidden');
                 $.ajax({
-                    url: "api/kursuses/delete/" + id,
-                    type: "GET",
+                    url: "/api/kursuses/create",
+                    type: "POST",
+                    data: JSON.stringify(datas),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function(response) {
-                        var alert = `
-                            <div class="flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50"
-                                role="alert">
-                                <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                                </svg>
-                                <span class="sr-only">Info</span>
-                                <div>
-                                    <span class="font-medium">Success alert!</span> Successfully deleted.
-                                </div>
-                            </div>
-                        `;
-                        $('.alert-space').append(alert);
+                        $('.btn-close').click();
+                        $('#addCourse').find('.form-control').val('');
                         table_courses();
-                        setTimeout(function() {
-                            $('.alert-space').empty();
-                        }, 3000);
                     },
                     error: function(errors) {
                         console.error(errors);
                     }
                 });
+            } else {
+                $('.alert-kursus').removeClass('hidden');
             }
-            
-            function openEditModal(id) {
-                $('.button-edit-open').click();
-                $.ajax({
-                    url: "api/kursuses/read/" + id,
-                    type: "GET",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function(response) {
-                        $('#editCourse').find('.form-control').each(function() {
-                        const inputName = $(this).attr('name');
-                        const inputValue = response["Kursus: "][inputName];
-                        
-                        if (inputName === 'jadwalmulai' || inputName === 'jadwalselesai') {
-                        const dateValue = moment(inputValue).format('MM/DD/YYYY');
-                            $("#" + $(this).attr('id')).val(dateValue);
-                        } else {
-                            $("#" + $(this).attr('id')).val(inputValue);
-                        }
-                        });
-                    },
-                    error: function(errors) {
-                        console.error(errors);
-                    }
-                });
-            }
+        });
 
-            function table_courses() {
-                $('#table-body-user').empty();
+        $(document).on('click', '.update', function(e) {
+            e.stopPropagation();
+            let id = $(this).data('id');
+            let datas = {};
+            let isValid = true;
+
+            $('#editCourse').find('.form-control').each(function() {
+                const inputType = $(this).attr('type');
+                const inputValue = $(this).val();
+                const inputName = $(this).attr('name');
+
+                if (!inputValue) {
+                    isValid = false;
+                }
+
+                if (inputName === 'jadwalmulai' || inputName === 'jadwalselesai') {
+                    const dateValue = moment(inputValue, 'MM/DD/YYYY').format('YYYY-MM-DD');
+                    datas[inputName] = dateValue;
+                } else {
+                    datas[inputName] = inputValue;
+                }
+            });
+
+            if (isValid) {
+                $('.alert-kursus').addClass('hidden');
                 $.ajax({
-                    url: "api/kursuses",
-                    type: "GET",
+                    url: "/api/kursuses/update/" + id,
+                    type: "POST",
+                    data: JSON.stringify(datas),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function(response) {
-                        var kursuses = response["kursuses: "];
-                        if (kursuses && kursuses.length > 0) {
-                            $.each(kursuses, function(index, item) {
-                                var row = `
-                                    <tr>
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            ${item.id}
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            ${item.nama}
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            ${item.deskripsi}
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            ${moment(item.jadwalmulai).format('DD-MM-YYYY')}
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            ${moment(item.jadwalselesai).format('DD-MM-YYYY')}
-                                        </td>
-                                        <td class="px-6 py-4 text-right flex">
-                                            <button class="edit-button block me-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                                type="button" data-id="${item.id}">
-                                                <i class="fa-solid fa-pen"></i>
-                                            </button>
-                                            <button class="delete-button block me-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                                type="button" data-id="${item.id}">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
-                                            
-                                        </td>
-                                    </tr>
-                                `;
-                                if ($('#table-body-user').length > 0) {
-                                    $('#table-body-user').append(row);
-                                } else {
-                                    console.error('Table body element not found');
-                                }
-                            });
-                        } else {
-                            console.error('No data found');
-                        }
-                        $('#skeleton-loader-table-user').hide();
-                        $('#table-body-user').show();
+                        $('.btn-close-edit').click();
+                        $('#editCourse').find('.form-control').val('');
+                        table_courses();
                     },
-                    error: function(xhr, status, error) {
-                        console.error(error);
+                    error: function(errors) {
+                        console.error(errors);
+                    }
+                });
+            } else {
+                $('.alert-kursus').removeClass('hidden');
+            }
+        });
+
+        $('.form-control').on('input', function() {
+            let isValid = true;
+            $('#addCourse').find('.form-control').each(function() {
+                if (!$(this).val()) {
+                    isValid = false;
+                }
+            });
+
+            if (isValid) {
+                $('.alert-kursus').addClass('hidden');
+            }
+        });
+
+        $(document).on('click', '.edit-button', function() {
+            const courseId = $(this).data('id');
+            $('.update').data('id', courseId);
+            openEditModal(courseId);
+        });
+
+        $(document).on('click', '.delete-button', function() {
+            const courseId = $(this).data('id');
+            $('.delete-course').data('id', courseId);
+            $('.button-delete-open').click();
+        });
+
+        $(document).on('click', '.btn-close-edit', function() {
+            $('#editCourse').find('.form-control').val('');
+        });
+
+        $(document).on('click', '.delete-course', function() {
+            let id = $(this).data('id');
+            openDeleteModal(id);
+        });
+
+        function openDeleteModal(id) {
+            $.ajax({
+                url: "api/kursuses/delete/" + id,
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    var alert = `
+                        <div class="flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50"
+                            role="alert">
+                            <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                            </svg>
+                            <span class="sr-only">Info</span>
+                            <div>
+                                <span class="font-medium">Success alert!</span> Successfully deleted.
+                            </div>
+                        </div>
+                    `;
+                    $('.alert-space').append(alert);
+                    table_courses();
+                    setTimeout(function() {
+                        $('.alert-space').empty();
+                    }, 3000);
+                },
+                error: function(errors) {
+                    console.error(errors);
+                }
+            });
+        }
+        
+        function openEditModal(id) {
+            $('.button-edit-open').click();
+            $.ajax({
+                url: "api/kursuses/read/" + id,
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    $('#editCourse').find('.form-control').each(function() {
+                    const inputName = $(this).attr('name');
+                    const inputValue = response["Kursus: "][inputName];
+                    
+                    if (inputName === 'jadwalmulai' || inputName === 'jadwalselesai') {
+                    const dateValue = moment(inputValue).format('MM/DD/YYYY');
+                        $("#" + $(this).attr('id')).val(dateValue);
+                    } else {
+                        $("#" + $(this).attr('id')).val(inputValue);
+                    }
+                    });
+                },
+                error: function(errors) {
+                    console.error(errors);
+                }
+            });
+        }
+
+        var currentPage = 1;
+        var entriesPerPage = 10;
+        var allData = [];
+        
+        function table_courses() {
+            $('#table-body-user').empty();
+            $.ajax({
+                url: "api/kursuses",
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    allData = response["kursuses: "];
+                    console.log(allData);
+                    if (allData && allData.length > 0) {
+                        renderTable(currentPage);
+                        updatePaginationInfo(currentPage, allData.length);
+                        $('#pagination-container').show();
+                    } else {
                         var row = `
                         <tr>
                             <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
-                                Fetching data error..
+                                No data found
                             </th>
                         </tr>
                         `;
-                        if ($('#table-body-user').length > 0) {
-                            $('#table-body-user').append(row);
-                        } else {
-                            console.error('Table body element not found');
-                        }
-                        $('#skeleton-loader-table-user').hide();
-                        $('#table-body-user').show();
+                        $('#table-body-user').append(row);
+                        $('#pagination-container').hide();
                     }
-                });
-            }
+                    $('#skeleton-loader-table-user').hide();
+                    $('#table-body-user').show();
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    var row = `
+                    <tr>
+                        <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
+                            Fetching data error..
+                        </th>
+                    </tr>
+                    `;
+                    $('#table-body-user').append(row);
+                    $('#pagination-container').hide();
+                    $('#skeleton-loader-table-user').hide();
+                    $('#table-body-user').show();
+                }
+            });
+        }
+        
+        function renderTable(page) {
+            $('#table-body-user').empty();
+            var start = (page - 1) * entriesPerPage;
+            var end = start + entriesPerPage;
+            var paginatedData = allData.slice(start, end);
+            
+            $.each(paginatedData, function(index, item) {
+            var row = `
+            <tr>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    ${item.id}
+                </th>
+                <td class="px-6 py-4">
+                    ${item.nama}
+                </td>
+                <td class="px-6 py-4">
+                    ${item.deskripsi}
+                </td>
+                <td class="px-6 py-4">
+                    ${moment(item.jadwalmulai).format('DD-MM-YYYY')}
+                </td>
+                <td class="px-6 py-4">
+                    ${moment(item.jadwalselesai).format('DD-MM-YYYY')}
+                </td>
+                <td class="px-6 py-4 text-right flex">
+                    <button
+                        class="edit-button block me-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                        type="button" data-id="${item.id}">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                    <button
+                        class="delete-button block me-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                        type="button" data-id="${item.id}">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            `;
+            $('#table-body-user').append(row);
+            });
+        }
+        
+        function updatePaginationInfo(page, totalEntries) {
+        var startEntry = (page - 1) * entriesPerPage + 1;
+        var endEntry = Math.min(startEntry + entriesPerPage - 1, totalEntries);
+        
+        $('#start-entry').text(startEntry);
+        $('#end-entry').text(endEntry);
+        $('#total-entries').text(totalEntries);
+        
+        // Enable/disable buttons
+        if (page === 1) {
+        $('#prev-button').prop('disabled', true);
+        } else {
+        $('#prev-button').prop('disabled', false);
+        }
+        
+        if (endEntry >= totalEntries) {
+        $('#next-button').prop('disabled', true);
+        } else {
+        $('#next-button').prop('disabled', false);
+        }
+        }
+        
+        // Event listeners for pagination buttons
+        $('#prev-button').on('click', function() {
+        if (currentPage > 1) {
+        currentPage--;
+        renderTable(currentPage);
+        updatePaginationInfo(currentPage, allData.length);
+        }
         });
+        
+        $('#next-button').on('click', function() {
+        if ((currentPage * entriesPerPage) < allData.length) { currentPage++; renderTable(currentPage);
+            updatePaginationInfo(currentPage, allData.length); } });
+    });
 </script>
 @endsection
