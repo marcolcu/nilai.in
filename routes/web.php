@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\frontend\DashboardController;
 use App\Http\Controllers\frontend\KursusController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\frontend\LectureController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,13 +24,12 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/courses', [KursusController::class, 'index']);
+    Route::get('/lecture', [LectureController::class, 'index']);
+
 
     Route::get('/about', function () {
         return view('aboutus');
     });
-
-    // Component
-    Route::get('/table-kursus', [KursusController::class, 'component']);
 });
 
 Route::get('/login', [AuthController::class, 'getLogin']);
