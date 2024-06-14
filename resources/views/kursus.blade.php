@@ -671,6 +671,8 @@
             var allData = [];
             
             function table_courses() {
+                $('#skeleton-loader-table-user').show();
+                $('#table-body-user').hide();
                 $('#table-body-user').empty();
                 $.ajax({
                     url: "api/kursuses",

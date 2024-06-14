@@ -639,6 +639,8 @@
             var allData = [];
             
             function table_lectures() {
+                $('#skeleton-loader-table-lecture').show();
+                $('#table-body-lecture').hide();
                 $('#table-body-lecture').empty();
                 $.ajax({
                     url: "api/materis",
