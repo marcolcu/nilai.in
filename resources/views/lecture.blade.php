@@ -46,6 +46,9 @@
                     Deskripsi
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Kursus
+                </th>
+                <th scope="col" class="px-6 py-3">
                     <span class="sr-only">Edit</span>
                 </th>
             </tr>
@@ -642,37 +645,69 @@
                 $('#skeleton-loader-table-lecture').show();
                 $('#table-body-lecture').hide();
                 $('#table-body-lecture').empty();
+
                 $.ajax({
-                    url: "api/materis",
+                    url: "api/kursuses",
                     type: "GET",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    success: function(response) {
-                        allData = response["materis: "];
-                        if (allData && allData.length > 0) {
-                            renderTable(currentPage);
-                            updatePaginationInfo(currentPage, allData.length);
-                            $('#pagination-container').show();
-                        } else {
-                            var row = `
-                            <tr>
-                                <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
-                                    No data found
-                                </th>
-                            </tr>
-                            `;
-                            $('#table-body-lecture').append(row);
-                            $('#pagination-container').hide();
-                        }
-                        $('#skeleton-loader-table-lecture').hide();
-                        $('#table-body-lecture').show();
+                    success: function(kursusResponse) {
+                        var kursusMap = {};
+                        $.each(kursusResponse["kursuses: "], function(index, kursus) {
+                            kursusMap[kursus.id] = kursus.nama;
+                        });
+
+                        $.ajax({
+                            url: "api/materis",
+                            type: "GET",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function(response) {
+                                allData = response["materis: "];
+                                if (allData && allData.length > 0) {
+                                    allData.sort(function(a, b) {
+                                        return b.id - a.id;
+                                    });
+
+                                    renderTable(currentPage, kursusMap);
+                                    updatePaginationInfo(currentPage, allData.length);
+                                    $('#pagination-container').show();
+                                } else {
+                                    var row = `
+                                    <tr>
+                                        <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
+                                            No data found
+                                        </th>
+                                    </tr>
+                                    `;
+                                    $('#table-body-lecture').append(row);
+                                    $('#pagination-container').hide();
+                                }
+                                $('#skeleton-loader-table-lecture').hide();
+                                $('#table-body-lecture').show();
+                            },
+                            error: function(xhr, status, error) {
+                                console.error(error);
+                                var row = `
+                                <tr>
+                                    <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
+                                        Fetching data error..
+                                    </th>
+                                </tr>
+                                `;
+                                $('#table-body-lecture').append(row);
+                                $('#pagination-container').hide();
+                                $('#skeleton-loader-table-lecture').hide();
+                                $('#table-body-lecture').show();
+                            }
+                        });
                     },
                     error: function(xhr, status, error) {
-                        console.error(error);
+                        console.error("Failed to fetch kursuses:", error);
                         var row = `
                         <tr>
                             <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
-                                Fetching data error..
+                                Fetching kursuses data error..
                             </th>
                         </tr>
                         `;
@@ -683,48 +718,53 @@
                     }
                 });
             }
-            
-            function renderTable(page) {
+
+            function renderTable(page, kursusMap) {
                 $('#table-body-lecture').empty();
                 var start = (page - 1) * entriesPerPage;
                 var end = start + entriesPerPage;
                 var paginatedData = allData.slice(start, end);
-                
+
                 $.each(paginatedData, function(index, item) {
-                var row = `
-                <tr>
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        ${item.id}
-                    </th>
-                    <td class="px-6 py-4">
-                        ${item.judul}
-                    </td>
-                    <td class="px-6 py-4">
-                        ${item.tipe}
-                    </td>
-                    <td class="px-6 py-4">
-                        ${item.konten}
-                    </td>
-                    <td class="px-6 py-4">
-                        ${item.deskripsi}
-                    </td>
-                    <td class="px-6 py-4 text-right flex">
-                        <button
-                            class="edit-button block me-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                            type="button" data-id="${item.id}">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-                        <button
-                            class="delete-button block me-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                            type="button" data-id="${item.id}">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                `;
-                $('#table-body-lecture').append(row);
+                    var kursusNama = kursusMap[item.kursus_id] || 'Unknown';
+                    var row = `
+                    <tr>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            ${start + index + 1}
+                        </th>
+                        <td class="px-6 py-4">
+                            ${item.judul}
+                        </td>
+                        <td class="px-6 py-4">
+                            ${item.tipe}
+                        </td>
+                        <td class="px-6 py-4">
+                            ${item.konten}
+                        </td>
+                        <td class="px-6 py-4">
+                            ${item.deskripsi}
+                        </td>
+                        <td class="px-6 py-4">
+                            ${kursusNama}
+                        </td>
+                        <td class="px-6 py-4 text-right flex">
+                            <button
+                                class="edit-button block me-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                                type="button" data-id="${item.id}">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button
+                                class="delete-button block me-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                                type="button" data-id="${item.id}">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    `;
+                    $('#table-body-lecture').append(row);
                 });
             }
+
             
             function updatePaginationInfo(page, totalEntries) {
                 var startEntry = (page - 1) * entriesPerPage + 1;
