@@ -19,6 +19,7 @@ class Soal extends Model
         'IDUjian',
     ];
     use HasFactory;
+    protected $table = 'soals';
     // public function kursus()
     // {
     //     return $this->belongsTo(Kursus::class);

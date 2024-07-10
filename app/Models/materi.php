@@ -15,6 +15,7 @@ class Materi extends Model
         'IDMataPelajaran',
     ];
     use HasFactory;
+    protected $table = 'materis';
     // public function kursus()
     // {
     //     return $this->belongsTo(Kursus::class);

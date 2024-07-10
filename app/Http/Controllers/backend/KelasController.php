@@ -44,12 +44,12 @@ class KelasController extends Controller
 
     public function show(string $id){
 
-        $kelas = kelas::find($id);
+        $kelas = Kelas::find($id);
 
         if ($kelas){
             return response()->json([
                 'Message: ' => 'kelases found.',
-                'kelas: ' => $kelas
+                'Kelas: ' => $kelas
             ], 200);
 
         }else {
@@ -60,17 +60,16 @@ class KelasController extends Controller
     }
 
     public function update(Request $request, string $id){
-        $kelas = kelas::find($id);
+        $kelas = Kelas::find($id);
 
         if($kelas){
-
            $input = $request->validate([
                 'tingkat' => ['required'],
                 'jurusan' => ['required'],
                 'wali' => ['required'],
                 'ketua' => ['required'],
             ]);
-                
+    
             $kelas->tingkat = $input['tingkat'];
             $kelas->jurusan = $input['jurusan'];
             $kelas->wali = $input['wali'];
@@ -92,7 +91,7 @@ class KelasController extends Controller
     }
 
     public function destroy(string $id){
-        $kelas = kelas::find($id);
+        $kelas = Kelas::find($id);
 
         if($kelas){
             if ($kelas->delete()){

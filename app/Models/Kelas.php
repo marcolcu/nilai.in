@@ -14,6 +14,7 @@ class Kelas extends Model
         'ketua',
     ];
     use HasFactory;
+    protected $table = 'kelases';
     // public function materi()
     // {
     //     return $this->hasMany(Materi::class);
