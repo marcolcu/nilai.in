@@ -12,38 +12,45 @@ class AuthController extends Controller
 {
     //
 
-    public function getLogin(){
+    public function getLogin()
+    {
         return view("login");
     }
 
-    public function postLogin(Request $request){
-        $valid = Auth::attempt(['email'=> $request->email,
-        'password'=> $request->password]);
+    public function postLogin(Request $request)
+    {
+        $valid = Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ]);
 
-        if($valid){
+        if ($valid) {
             return redirect("/dashboard");
-        }else{
+        } else {
             return redirect()->back()->withErrors('Authentication Error');
         }
     }
 
-    public function postRegister(Request $request){
-        $rules=[
+    public function postRegister(Request $request)
+    {
+        $rules = [
             'email' => 'required|email|unique:users',
             'name'  => 'required|alpha:ascii',
             'role'  => 'required',
             'password' => ['required', 'string', 'min:6', 'regex:/[0-9]/', 'confirmed'],
         ];
-        
+
         $validator = Validator::make($request->all(), $rules);
-        if($validator->fails()){
-            return back()->withErrors($validator);
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return view('login', compact('errors'));
         }
 
         $users = User::all();
         foreach ($users as $user) {
-            if($request->email==$user->email){
-                return back()->withErrors('Email already used, please input another email');
+            if ($request->email == $user->email) {
+                $errors = ['email' => 'Email already used, please input another email'];
+                return view('login', compact('errors'));
             }
         }
         $user = new User();
@@ -53,12 +60,13 @@ class AuthController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        Auth::attempt(['email'=> $request->email, 'password'=> $request->password]);
-        return redirect("/dashboard");
+        Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+        return redirect("/dashboard")->with('success', 'Successfully Registered.');
     }
 
 
-    public function getLogout(){
+    public function getLogout()
+    {
         Auth::logout();
         return redirect("/");
     }

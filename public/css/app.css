@@ -13,6 +13,10 @@
     --tw-content: "";
 }
 
+:root {
+  --dark-mode: none;
+}
+
 html {
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
@@ -20,11 +24,13 @@ html {
     tab-size: 4;
     font-family: Figtree, sans-serif;
     font-feature-settings: normal;
+    color-scheme: light !important;
 }
 
 body {
     margin: 0;
     line-height: inherit;
+    overflow-x: hidden;
 }
 
 hr {

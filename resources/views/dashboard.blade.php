@@ -7,3 +7,7 @@
         <x-table />
     </div>
 @endsection
+
+@section('js')
+    @yield('js-table')
+@endsection
