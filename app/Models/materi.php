@@ -12,11 +12,11 @@ class Materi extends Model
         'deksripsi',
         'konten',
         'tipe',
-        'kursus_id',
+        'IDMataPelajaran',
     ];
     use HasFactory;
-    public function kursus()
-    {
-        return $this->belongsTo(Kursus::class);
-    }
+    // public function kursus()
+    // {
+    //     return $this->belongsTo(Kursus::class);
+    // }
 }

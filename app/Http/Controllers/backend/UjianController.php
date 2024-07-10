@@ -20,23 +20,17 @@ class UjianController extends Controller
 
     public function store(Request $request){
         $input = $request->validate([
-            'pertanyaan' => ['required'],
-            'benar' => ['required'],
-            'salah1' => ['required'],
-            'salah2' => ['required'],
-            'salah3' => ['required'],
-            'salah4' => ['required'],
-            'kursus_id' => ['required'],
+            'nama' => ['required'],
+            'deskripsi' => ['required'],
+            'kkm' => ['required'],
+            'IDMataPelajaran' => ['required'],
         ]);
         $ujian = new Ujian();
 
-        $ujian->pertanyaan = $input['pertanyaan'];
-        $ujian->benar = $input['benar'];
-        $ujian->salah1 = $input['salah1'];
-        $ujian->salah2 = $input['salah2'];
-        $ujian->salah3 = $input['salah3'];
-        $ujian->salah4 = $input['salah4'];
-        $ujian->kursus_id = $input['kursus_id'];
+        $ujian->nama = $input['nama'];
+        $ujian->deskripsi = $input['deskripsi'];
+        $ujian->kkm = $input['kkm'];
+        $ujian->IDMataPelajaran = $input['IDMataPelajaran'];
 
         if ($ujian->save()){
             return response()->json([
@@ -71,22 +65,16 @@ class UjianController extends Controller
         if($ujian){
 
            $input = $request->validate([
-                'pertanyaan' => ['required'],
-                'benar' => ['required'],
-                'salah1' => ['required'],
-                'salah2' => ['required'],
-                'salah3' => ['required'],
-                'salah4' => ['required'],
-                'kursus_id' => ['required'],
+                'nama' => ['required'],
+                'deskripsi' => ['required'],
+                'kkm' => ['required'],
+                'IDMataPelajaran' => ['required'],
             ]);
 
-            $ujian->pertanyaan = $input['pertanyaan'];
-            $ujian->benar = $input['benar'];
-            $ujian->salah1 = $input['salah1'];
-            $ujian->salah2 = $input['salah2'];
-            $ujian->salah3 = $input['salah3'];
-            $ujian->salah4 = $input['salah4'];
-            $ujian->kursus_id = $input['kursus_id'];
+            $ujian->nama = $input['nama'];
+            $ujian->deskripsi = $input['deskripsi'];
+            $ujian->kkm = $input['kkm'];
+            $ujian->IDMataPelajaran = $input['IDMataPelajaran'];
 
             if ($ujian->save()){
                 return response()->json([

@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class PenggunaanKursusSeeder extends Seeder
+class JawabanSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,51 +15,45 @@ class PenggunaanKursusSeeder extends Seeder
     public function run(): void
     {
         //
-        DB::table('penggunaan_kursuses')->insert([
-            'progres'    => 50,
-            'nilai'    => 60,
-            'user_id'    => 1,
-            'kursus_id'    => 1,
+        DB::table('jawabans')->insert([
+            'IDProgressUjian'    => '1',
+            'jawaban'         => 'edison',
+            'IDSoal'         => '1',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        DB::table('penggunaan_kursuses')->insert([
-            'progres'    => 40,
-            'nilai'    => 20,
-            'user_id'    => 2,
-            'kursus_id'    => 1,
+        DB::table('jawabans')->insert([
+            'IDProgressUjian'    => '1',
+            'jawaban'         => 'Yang Maha Kuasa',
+            'IDSoal'         => '2',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        DB::table('penggunaan_kursuses')->insert([
-            'progres'    => 50,
-            'nilai'    => 60,
-            'user_id'    => 1,
-            'kursus_id'    => 2,
+        DB::table('jawabans')->insert([
+            'IDProgressUjian'    => '1',
+            'jawaban'         => 'gak tau',
+            'IDSoal'         => '3',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        DB::table('penggunaan_kursuses')->insert([
-            'progres'    => 40,
-            'nilai'    => 20,
-            'user_id'    => 2,
-            'kursus_id'    => 2,
+        DB::table('jawabans')->insert([
+            'IDProgressUjian'    => '2',
+            'jawaban'         => 'edison',
+            'IDSoal'         => '1',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        DB::table('penggunaan_kursuses')->insert([
-            'progres'    => 50,
-            'nilai'    => 60,
-            'user_id'    => 1,
-            'kursus_id'    => 3,
+        DB::table('jawabans')->insert([
+            'IDProgressUjian'    => '2',
+            'jawaban'         => 'Yang Maha Kuasa',
+            'IDSoal'         => '2',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        DB::table('penggunaan_kursuses')->insert([
-            'progres'    => 40,
-            'nilai'    => 20,
-            'user_id'    => 2,
-            'kursus_id'    => 3,
+        DB::table('jawabans')->insert([
+            'IDProgressUjian'    => '2',
+            'jawaban'         => 'gak tau',
+            'IDSoal'         => '3',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);

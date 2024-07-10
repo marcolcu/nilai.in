@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\backend\JawabanController;
+use App\Http\Controllers\backend\KelasController;
+use App\Http\Controllers\backend\MataPelajaranController;
+use App\Http\Controllers\backend\MateriController;
+use App\Http\Controllers\backend\ProgressUjianController;
+use App\Http\Controllers\backend\SoalController;
 use App\Http\Controllers\KursusController;
-use App\Http\Controllers\MateriController;
 use App\Http\Controllers\PenggunaanKursusController;
 use App\Http\Controllers\UjianController;
 use Illuminate\Http\Request;
@@ -22,13 +27,28 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::controller(KursusController::class)->group(function () {
-    Route::get('kursuses', 'index');
-    Route::post('kursuses/create', 'store');
-    Route::post('kursuses/update/{id}', 'update');
-    Route::get('kursuses/read/{id}', 'show');
-    Route::get('kursuses/delete/{id}', 'destroy');
+Route::controller(JawabanController::class)->group(function () {
+    Route::get('jawabans', 'index');
+    Route::post('jawabans/create', 'store');
+    Route::post('jawabans/update/{id}', 'update');
+    Route::get('jawabans/read/{id}', 'show');
+    Route::get('jawabans/delete/{id}', 'destroy');
+});
 
+Route::controller(KelasController::class)->group(function () {
+    Route::get('kelases', 'index');
+    Route::post('kelases/create', 'store');
+    Route::post('kelases/update/{id}', 'update');
+    Route::get('kelases/read/{id}', 'show');
+    Route::get('kelases/delete/{id}', 'destroy');
+});
+
+Route::controller(MataPelajaranController::class)->group(function () {
+    Route::get('matapelajarans', 'index');
+    Route::post('matapelajarans/create', 'store');
+    Route::post('matapelajarans/update/{id}', 'update');
+    Route::get('matapelajarans/read/{id}', 'show');
+    Route::get('matapelajarans/delete/{id}', 'destroy');
 });
 
 Route::controller(MateriController::class)->group(function () {
@@ -39,12 +59,20 @@ Route::controller(MateriController::class)->group(function () {
     Route::get('materis/delete/{id}', 'destroy');
 });
 
-Route::controller(PenggunaanKursusController::class)->group(function () {
-    Route::get('penggunaankursuses', 'index');
-    Route::post('penggunaankursuses/create', 'store');
-    Route::post('penggunaankursuses/update/{id}', 'update');
-    Route::get('penggunaankursuses/read/{id}', 'show');
-    Route::get('penggunaankursuses/delete/{id}', 'destroy');
+Route::controller(ProgressUjianController::class)->group(function () {
+    Route::get('progressujians', 'index');
+    Route::post('progressujians/create', 'store');
+    Route::post('progressujians/update/{id}', 'update');
+    Route::get('progressujians/read/{id}', 'show');
+    Route::get('progressujians/delete/{id}', 'destroy');
+});
+
+Route::controller(SoalController::class)->group(function () {
+    Route::get('soals', 'index');
+    Route::post('soals/create', 'store');
+    Route::post('soals/update/{id}', 'update');
+    Route::get('soals/read/{id}', 'show');
+    Route::get('soals/delete/{id}', 'destroy');
 });
 
 Route::controller(UjianController::class)->group(function () {
@@ -54,3 +82,11 @@ Route::controller(UjianController::class)->group(function () {
     Route::get('ujians/read/{id}', 'show');
     Route::get('ujians/delete/{id}', 'destroy');
 });
+
+// Route::controller(TemplateController::class)->group(function () {
+//     Route::get('templates', 'index');
+//     Route::post('templates/create', 'store');
+//     Route::post('templates/update/{id}', 'update');
+//     Route::get('templates/read/{id}', 'show');
+//     Route::get('templates/delete/{id}', 'destroy');
+// });

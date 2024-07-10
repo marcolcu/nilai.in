@@ -13,13 +13,10 @@ return new class extends Migration
     {
         Schema::create('ujians', function (Blueprint $table) {
             $table->id();
-            $table->string('pertanyaan');
-            $table->string('benar');
-            $table->string('salah1')->nullable();
-            $table->string('salah2')->nullable();
-            $table->string('salah3')->nullable();
-            $table->string('salah4')->nullable();
-            $table->foreignId('kursus_id')->references('id')->on('kursuses')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('nama');
+            $table->string('deskripsi');
+            $table->string('kkm');
+            $table->foreignId('IDMataPelajaran')->references('id')->on('matapelajarans')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
