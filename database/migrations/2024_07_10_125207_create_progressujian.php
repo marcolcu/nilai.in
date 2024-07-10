@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nilai');
             $table->string('notes');
             $table->foreignId('IDUjian')->references('id')->on('ujians')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('IDPengguna')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('IDUser')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

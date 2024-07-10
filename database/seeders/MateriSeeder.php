@@ -20,7 +20,7 @@ class MateriSeeder extends Seeder
             'deskripsi'         => 'Jadi gini caranya tambah tambahan',
             'konten'         => 'Link Video',
             'tipe'         => 'Video',
-            'kursus_id'         => 1,
+            'IDMataPelajaran'         => 1,
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -29,7 +29,7 @@ class MateriSeeder extends Seeder
             'deskripsi'         => 'Jadi gini caranya Kali kalian',
             'konten'         => 'Link Video',
             'tipe'         => 'Video',
-            'kursus_id'         => 1,
+            'IDMataPelajaran'         => 1,
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -38,7 +38,7 @@ class MateriSeeder extends Seeder
             'deskripsi'         => 'Jadi gini caranya kurang kurangan',
             'konten'         => 'Link Video',
             'tipe'         => 'Video',
-            'kursus_id'         => 1,
+            'IDMataPelajaran'         => 1,
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -50,7 +50,7 @@ class MateriSeeder extends Seeder
             'deskripsi'         => 'Jadi gini caranya nentuin ukuran dan bacanya',
             'konten'         => 'Link Video',
             'tipe'         => 'Video',
-            'kursus_id'         => 2,
+            'IDMataPelajaran'         => 2,
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -59,7 +59,7 @@ class MateriSeeder extends Seeder
             'deskripsi'         => 'Jadi gini caranya ngitung tekanan',
             'konten'         => 'Link Video',
             'tipe'         => 'Video',
-            'kursus_id'         => 2,
+            'IDMataPelajaran'         => 2,
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -68,7 +68,7 @@ class MateriSeeder extends Seeder
             'deskripsi'         => 'Jadi di dunia ini ada yang namanya gravitasi',
             'konten'         => 'Link Video',
             'tipe'         => 'Video',
-            'kursus_id'         => 2,
+            'IDMataPelajaran'         => 2,
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -81,7 +81,7 @@ class MateriSeeder extends Seeder
             'deskripsi'         => 'Gini caranya buat website pake html',
             'konten'         => 'Link Video',
             'tipe'         => 'Video',
-            'kursus_id'         => 3,
+            'IDMataPelajaran'         => 3,
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -90,7 +90,7 @@ class MateriSeeder extends Seeder
             'deskripsi'         => 'Gini buat website pakai php',
             'konten'         => 'Link Video',
             'tipe'         => 'Video',
-            'kursus_id'         => 3,
+            'IDMataPelajaran'         => 3,
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -99,7 +99,7 @@ class MateriSeeder extends Seeder
             'deskripsi'         => 'Gini buat website pakai framework laravel',
             'konten'         => 'Link Video',
             'tipe'         => 'Video',
-            'kursus_id'         => 3,
+            'IDMataPelajaran'         => 3,
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);

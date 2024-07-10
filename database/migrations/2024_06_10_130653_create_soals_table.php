@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string("tipe");
             $table->string("pertanyaan");
-            $table->string("pilihan1");
-            $table->string("pilihan2");
-            $table->string("pilihan3");
-            $table->string("pilihan4");
-            $table->string("pilihan5");
+            $table->string("pilihan1")->nullable();
+            $table->string("pilihan2")->nullable();
+            $table->string("pilihan3")->nullable();
+            $table->string("pilihan4")->nullable();
+            $table->string("pilihan5")->nullable();
             $table->string("kunci");
             $table->foreignId('IDUjian')->references('id')->on('ujians')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();

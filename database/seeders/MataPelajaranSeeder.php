@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class KursusSeeder extends Seeder
+class MataPelajaranSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,27 +15,24 @@ class KursusSeeder extends Seeder
     public function run(): void
     {
         //
-        DB::table('kursuses')->insert([
+        DB::table('matapelajarans')->insert([
             'nama'    => 'Matematika',
             'deskripsi'         => 'Di sini dilatih ujian itung itungan',
-            'jadwalmulai'         => '2024-07-29',
-            'jadwalselesai'         => '2024-08-29',
+            'IDKelas'         => '2',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        DB::table('kursuses')->insert([
+        DB::table('matapelajarans')->insert([
             'nama'    => 'Fisika',
             'deskripsi'         => 'Di sini dilatih mental karena tidak semua orang suka fisika',
-            'jadwalmulai'         => '2024-07-29',
-            'jadwalselesai'         => '2024-08-29',
+            'IDKelas'         => '1',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        DB::table('kursuses')->insert([
+        DB::table('matapelajarans')->insert([
             'nama'    => 'Komputer',
             'deskripsi'         => 'Di sini isinya cuman main main',
-            'jadwalmulai'         => '2024-07-29',
-            'jadwalselesai'         => '2024-08-29',
+            'IDKelas'         => '1',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
