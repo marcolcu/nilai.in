@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -35,7 +35,7 @@ class AuthController extends Controller
     {
         $rules = [
             'email' => 'required|email|unique:users',
-            'name'  => 'required|alpha:ascii',
+            'nama'  => 'required|alpha:ascii',
             'role'  => 'required',
             'password' => ['required', 'string', 'min:6', 'regex:/[0-9]/', 'confirmed'],
         ];
@@ -55,7 +55,7 @@ class AuthController extends Controller
         }
         $user = new User();
         $user->email = $request->email;
-        $user->name = $request->name;
+        $user->nama = $request->nama;
         $user->role = $request->role;
         $user->password = bcrypt($request->password);
         $user->save();

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Materi;
@@ -24,7 +24,7 @@ class MateriController extends Controller
             'deskripsi' => ['required'],
             'konten' => ['required'],
             'tipe' => ['required'],
-            'kursus_id' => ['required'],
+            'IDMataPelajaran' => ['required'],
         ]);
         $materi = new Materi();
 
@@ -32,7 +32,7 @@ class MateriController extends Controller
         $materi->deskripsi = $input['deskripsi'];
         $materi->konten = $input['konten'];
         $materi->tipe = $input['tipe'];
-        $materi->kursus_id = $input['kursus_id'];
+        $materi->IDMataPelajaran = $input['IDMataPelajaran'];
 
         if ($materi->save()){
             return response()->json([
@@ -71,14 +71,14 @@ class MateriController extends Controller
                 'deskripsi' => ['required'],
                 'konten' => ['required'],
                 'tipe' => ['required'],
-                'kursus_id' => ['required'],
+                'IDMataPelajaran' => ['required'],
             ]);
 
             $materi->judul = $input['judul'];
             $materi->deskripsi = $input['deskripsi'];
             $materi->konten = $input['konten'];
             $materi->tipe = $input['tipe'];
-            $materi->kursus_id = $input['kursus_id'];
+            $materi->IDMataPelajaran = $input['IDMataPelajaran'];
 
             if ($materi->save()){
                 return response()->json([
