@@ -13,6 +13,7 @@ class Jawaban extends Model
         'IDSoal',
     ];
     use HasFactory;
+    protected $table = 'jawabans';
     // public function user()
     // {
     //     return $this->belongsTo(User::class);

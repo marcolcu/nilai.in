@@ -6,9 +6,7 @@ use App\Http\Controllers\backend\MataPelajaranController;
 use App\Http\Controllers\backend\MateriController;
 use App\Http\Controllers\backend\ProgressUjianController;
 use App\Http\Controllers\backend\SoalController;
-use App\Http\Controllers\KursusController;
-use App\Http\Controllers\PenggunaanKursusController;
-use App\Http\Controllers\UjianController;
+use App\Http\Controllers\backend\UjianController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

@@ -14,6 +14,7 @@ class Ujian extends Model
         'IDMataPelajaran',
     ];
     use HasFactory;
+    protected $table = 'ujians';
     // public function kursus()
     // {
     //     return $this->belongsTo(Kursus::class);

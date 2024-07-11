@@ -14,6 +14,7 @@ class ProgressUjian extends Model
         'IDUser',
     ];
     use HasFactory;
+    protected $table = 'progressujians';
     // public function user()
     // {
     //     return $this->belongsTo(User::class);

@@ -13,6 +13,7 @@ class MataPelajaran extends Model
         'IDKelas',
     ];
     use HasFactory;
+    protected $table = 'matapelajarans';
     // public function user()
     // {
     //     return $this->belongsTo(User::class);
