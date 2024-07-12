@@ -1,0 +1,82 @@
+TABLE jawabans
+    id
+    jawaban
+    IDProgressUjian
+    IDSoal
+    created_at
+    updated_at
+
+
+TABLE ujians
+    id
+    nama
+    deskripsi
+    kkm
+    IDMataPelajaran
+    created_at
+    updated_at
+
+
+TABLE soals
+    id
+    tipe
+    pertanyaan
+    pilihan1
+    pilihan2
+    pilihan3
+    pilihan4
+    pilihan5
+    kunci
+    IDUjian
+    created_at
+    updated_at
+
+
+TABLE materis
+    id
+    judul
+    deskripsi
+    konten
+    tipe
+    IDMataPelajaran
+    created_at
+    updated_at
+
+
+TABLE progressujian
+    id
+    nilai
+    catatan
+    IDUjian
+    IDUser
+    created_at
+    updated_at
+
+
+TABLE matapelajarans
+    id
+    nama
+    deskripsi
+    IDKelas
+    created_at
+    updated_at
+
+
+TABLE users
+    id
+    nama
+    email
+    password
+    peran
+    created_at
+    updated_at
+
+
+TABLE kelases
+    id
+    tingkat
+    jurusan
+    wali
+    ketua
+    created_at
+    updated_at
