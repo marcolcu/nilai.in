@@ -19,7 +19,6 @@ class UserController extends Controller
     }
 
     public function show(string $id){
-
         $user = user::find($id);
 
         if ($user){
@@ -38,7 +37,6 @@ class UserController extends Controller
     public function update(Request $request, string $id){
         $user = user::find($id);
         if($user){
-
            $input = $request->validate([
                 'nama' => ['required'],
                 'email' => ['required'],
@@ -47,10 +45,19 @@ class UserController extends Controller
                 'IDKelas' => ['required'],
             ]);
 
-            $user->nama = $input['nama'];
+            $users = User::all();
+            foreach ($users as $user1) {
+                if ($input['email'] == $user1->email) {
+                    return response([
+                        'Message: ' => 'Email already used, please input another email',
+                    ], 500);
+                }
+            }
+
             $user->email = $input['email'];
-            $user->password = bcrypt($input['password']);
+            $user->nama = $input['nama'];
             $user->peran = $input['peran'];
+            $user->password = bcrypt($input['password']);
             $user->IDKelas = $input['IDKelas'];
 
             if ($user->save()){
