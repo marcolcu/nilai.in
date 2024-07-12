@@ -36,7 +36,7 @@ class AuthController extends Controller
         $rules = [
             'email' => 'required|email|unique:users',
             'nama'  => 'required|alpha:ascii',
-            'role'  => 'required',
+            'peran'  => 'required',
             'password' => ['required', 'string', 'min:6', 'regex:/[0-9]/', 'confirmed'],
         ];
 
@@ -56,7 +56,7 @@ class AuthController extends Controller
         $user = new User();
         $user->email = $request->email;
         $user->nama = $request->nama;
-        $user->role = $request->role;
+        $user->peran = $request->peran;
         $user->password = bcrypt($request->password);
         $user->save();
 

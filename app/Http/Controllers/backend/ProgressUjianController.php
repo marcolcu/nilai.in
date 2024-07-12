@@ -22,14 +22,14 @@ class ProgressUjianController extends Controller
         $input = $request->validate([
             'IDUjian' => ['required'],
             'nilai' => ['required'],
-            'notes' => ['required'],
+            'catatan' => ['required'],
             'IDUser' => ['required'],
         ]);
         $progressujian = new ProgressUjian();
 
         $progressujian->IDUjian = $input['IDUjian'];
         $progressujian->nilai = $input['nilai'];
-        $progressujian->notes = $input['notes'];
+        $progressujian->catatan = $input['catatan'];
         $progressujian->IDUser = $input['IDUser'];
 
         if ($progressujian->save()){
@@ -67,13 +67,13 @@ class ProgressUjianController extends Controller
            $input = $request->validate([
                 'IDUjian' => ['required'],
                 'Nilai' => ['required'],
-                'Notes' => ['required'],
+                'catatan' => ['required'],
                 'IDUser' => ['required'],
             ]);
                 
             $progressujian->IDUjian = $input['IDUjian'];
             $progressujian->nilai = $input['nilai'];
-            $progressujian->notes = $input['notes'];
+            $progressujian->catatan = $input['catatan'];
             $progressujian->IDUser = $input['IDUser'];
 
             if ($progressujian->save()){

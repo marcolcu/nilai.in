@@ -18,7 +18,7 @@ class ProgressUjianSeeder extends Seeder
         DB::table('progressujians')->insert([
             'IDUjian'    => '1',
             'nilai'         => '80',
-            'Notes'         => '',
+            'catatan'         => '',
             'IDUser'         => '1',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
@@ -26,7 +26,7 @@ class ProgressUjianSeeder extends Seeder
         DB::table('progressujians')->insert([
             'IDUjian'    => '2',
             'nilai'         => '90',
-            'Notes'         => '',
+            'catatan'         => '',
             'IDUser'         => '1',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
@@ -34,7 +34,7 @@ class ProgressUjianSeeder extends Seeder
         DB::table('progressujians')->insert([
             'IDUjian'    => '3',
             'nilai'         => '100',
-            'Notes'         => '',
+            'catatan'         => '',
             'IDUser'         => '1',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
@@ -42,7 +42,7 @@ class ProgressUjianSeeder extends Seeder
         DB::table('progressujians')->insert([
             'IDUjian'    => '1',
             'nilai'         => '50',
-            'Notes'         => '',
+            'catatan'         => '',
             'IDUser'         => '2',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
@@ -50,7 +50,7 @@ class ProgressUjianSeeder extends Seeder
         DB::table('progressujians')->insert([
             'IDUjian'    => '2',
             'nilai'         => '40',
-            'Notes'         => '',
+            'catatan'         => '',
             'IDUser'         => '2',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
@@ -58,7 +58,7 @@ class ProgressUjianSeeder extends Seeder
         DB::table('progressujians')->insert([
             'IDUjian'    => '3',
             'nilai'         => '10',
-            'Notes'         => '',
+            'catatan'         => '',
             'IDUser'         => '2',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')

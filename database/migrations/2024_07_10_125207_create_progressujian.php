@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('progressujians', function (Blueprint $table) {
             $table->id();
             $table->string('nilai');
-            $table->string('notes');
+            $table->string('catatan');
             $table->foreignId('IDUjian')->references('id')->on('ujians')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('IDUser')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();
