@@ -185,21 +185,24 @@
             $("#register").on('click', function() {
                 $("#registerData").hide();
                 $("#loginData").show();
+                console.log('a')
             });
 
-            $("#login").on('click', function() {
+            $("#login").on('click', function(e) {
+                e.preventDefault();
                 $("#loginData").hide();
                 $("#registerData").show();
+                console.log('b')
             });
 
             $("#submit").on('click', function(event) {
                 var password = $("#password").val();
                 var confirmPassword = $("#password_confirmation").val();
-                console.log(password, confirmPassword);
                 if (password !== confirmPassword) {
                     event.preventDefault();
                     $('#alert').show();
                 } else {
+                    console.log('c')
                     $('#alert').hide();
                     $('#success').show();
                     $("#registerForm").submit();

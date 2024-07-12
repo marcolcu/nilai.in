@@ -51,9 +51,8 @@
 
     </div>
     <x-sidebar />
-    <div class="flex-1">
-        <x-navbar />
-        <div class="p-10">
+    <div class="p-4 sm:ml-64 w-full">
+        <div class="p-4 mt-14">
             @yield('content')
         </div>
     </div>

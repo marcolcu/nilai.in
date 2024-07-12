@@ -671,6 +671,8 @@
             var allData = [];
             
             function table_courses() {
+                $('#skeleton-loader-table-user').show();
+                $('#table-body-user').hide();
                 $('#table-body-user').empty();
                 $.ajax({
                     url: "api/kursuses",
@@ -680,6 +682,10 @@
                     success: function(response) {
                         allData = response["kursuses: "];
                         if (allData && allData.length > 0) {
+                            allData.sort(function(a, b) {
+                                return b.id - a.id;
+                            });
+
                             renderTable(currentPage);
                             updatePaginationInfo(currentPage, allData.length);
                             $('#pagination-container').show();
@@ -724,7 +730,7 @@
                 var row = `
                 <tr>
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        ${item.id}
+                        ${start + index + 1}
                     </th>
                     <td class="px-6 py-4">
                         ${item.nama}
