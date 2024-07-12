@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\backend\AuthController;
 use App\Http\Controllers\frontend\DashboardController;
+use App\Http\Controllers\frontend\KelasController;
 use App\Http\Controllers\frontend\KursusController;
 use App\Http\Controllers\frontend\LectureController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/courses', [KursusController::class, 'index']);
     Route::get('/lecture', [LectureController::class, 'index']);
+    Route::get('/kelas', [KelasController::class, 'index']);
 
 
     Route::get('/about', function () {
