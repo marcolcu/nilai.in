@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\backend\JawabanController;
 use App\Http\Controllers\backend\KelasController;
+use App\Http\Controllers\backend\KelasDetailController;
 use App\Http\Controllers\backend\MataPelajaranController;
 use App\Http\Controllers\backend\MateriController;
 use App\Http\Controllers\backend\ProgressUjianController;
 use App\Http\Controllers\backend\SoalController;
 use App\Http\Controllers\backend\UjianController;
 use App\Http\Controllers\backend\UserController;
+use App\Models\KelasDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,7 +34,6 @@ Route::controller(UserController::class)->group(function () {
     Route::get('users/read/{id}', 'show');
     Route::get('users/delete/{id}', 'destroy');
 });
-
 
 Route::controller(JawabanController::class)->group(function () {
     Route::get('jawabans', 'index');
@@ -88,6 +89,14 @@ Route::controller(UjianController::class)->group(function () {
     Route::post('ujians/update/{id}', 'update');
     Route::get('ujians/read/{id}', 'show');
     Route::get('ujians/delete/{id}', 'destroy');
+});
+
+Route::controller(KelasDetailController::class)->group(function () {
+    Route::get('kelasdetails', 'index');
+    Route::post('kelasdetails/create', 'store');
+    Route::post('kelasdetails/update/{id}', 'update');
+    Route::get('kelasdetails/read/{id}', 'show');
+    Route::get('kelasdetails/delete/{id}', 'destroy');
 });
 
 // Route::controller(TemplateController::class)->group(function () {
