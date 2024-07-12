@@ -28,5 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SoalSeeder::class);
         $this->call(ProgressUjianSeeder::class);
         $this->call(JawabanSeeder::class);
+        $this->call(KelasDetailSeeder::class);
     }
 }

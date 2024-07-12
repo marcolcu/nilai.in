@@ -22,7 +22,6 @@ class MataPelajaranController extends Controller
         $input = $request->validate([
             'nama' => ['required'],
             'deskripsi' => ['required'],
-            'IDKelas' => ['required'],
         ]);
         $matapelajaran = new MataPelajaran();
 
@@ -65,7 +64,6 @@ class MataPelajaranController extends Controller
            $input = $request->validate([
                 'nama' => ['required'],
                 'deskripsi' => ['required'],
-                'IDKelas' => ['required'],
             ]);
                 
             $matapelajaran->nama = $input['nama'];

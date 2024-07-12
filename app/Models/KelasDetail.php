@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MataPelajaran extends Model
+class KelasDetail extends Model
 {
     protected $fillable = [
-        'nama',
-        'deskripsi'
+        'IDMataPelajaran',
+        'IDKelas',
     ];
     use HasFactory;
-    protected $table = 'matapelajarans';
+    protected $table = 'kelasdetails';
     // public function user()
     // {
     //     return $this->belongsTo(User::class);
