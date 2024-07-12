@@ -10,7 +10,7 @@ class ProgressUjian extends Model
     protected $fillable = [
         'IDUjian',
         'nilai',
-        'notes',
+        'catatan',
         'IDUser',
     ];
     use HasFactory;
