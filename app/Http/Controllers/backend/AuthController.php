@@ -35,17 +35,20 @@ class AuthController extends Controller
 
     public function postRegister(Request $request)
     {
+        // print_r($request);
         $rules = [
             'email' => 'required|email|unique:users',
-            'nama'  => 'required|alpha:ascii',
+            'nama'  => 'required',
             'peran'  => 'required',
             'password' => ['required', 'string', 'min:6', 'regex:/[0-9]/', 'confirmed'],
+            'IDKelas'  => 'required',
         ];
+        $kelases = Kelas::all();
 
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
             $errors = $validator->errors();
-            return view('login', compact('errors'));
+            return view('login', compact("kelases"), compact('errors'));
         }
 
         $users = User::all();
@@ -60,6 +63,7 @@ class AuthController extends Controller
         $user->nama = $request->nama;
         $user->peran = $request->peran;
         $user->password = bcrypt($request->password);
+        $user->IDKelas = $request->IDKelas;
         $user->save();
 
         Auth::attempt(['email' => $request->email, 'password' => $request->password]);

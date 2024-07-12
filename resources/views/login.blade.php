@@ -119,32 +119,31 @@
                                         placeholder="name@company.com" required="">
                                 </div>
                                 <div>
-                                    <label for="name-register" class="block mb-2 text-sm font-medium text-gray-900">Your
+                                    <label for="nama-register" class="block mb-2 text-sm font-medium text-gray-900">Your
                                         name</label>
-                                    <input type="text" name="name" id="name-register"
+                                    <input type="text" name="nama" id="name-register"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                         placeholder="John" required="">
                                 </div>
                                 <div>
-                                    <label for="role-register" class="block mb-2 text-sm font-medium text-gray-900">Your
+                                    <label for="peran-register" class="block mb-2 text-sm font-medium text-gray-900">Your
                                         role</label>
-                                    <select name="role" id="role-register"
+                                    <select name="peran" id="role-register"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                         >
                                         <option value="">Select Role</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="user">User</option>
+                                        <option value="admin">Guru</option>
+                                        <option value="user">Wali Kelas</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label for="class-register" class="block mb-2 text-sm font-medium text-gray-900">Your
                                         class</label>
-                                    <select name="c;ass" id="class-register"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                                        >
+                                    <select name="IDKelas" id="class-register"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
                                         <option value="">Select Class</option>
                                         @foreach ($kelases as $kelas)
-                                            <option value="{{$kelas->id}}">  {{$kelas->tingkat}} {{$kelas->jurusan}}  </option>
+                                            <option value="{{$kelas->id}}">  {{$kelas->tingkat}} {{strtoupper($kelas->jurusan)}}  </option>
                                         @endforeach
                                     </select>
                                 </div>
