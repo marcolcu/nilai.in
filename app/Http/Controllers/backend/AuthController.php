@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kelas;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,8 @@ class AuthController extends Controller
 
     public function getLogin()
     {
-        return view("login");
+        $kelases = Kelas::all();
+        return view("login", compact("kelases"));
     }
 
     public function postLogin(Request $request)
