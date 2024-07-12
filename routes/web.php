@@ -5,6 +5,7 @@ use App\Http\Controllers\frontend\DashboardController;
 use App\Http\Controllers\frontend\KelasController;
 use App\Http\Controllers\frontend\KursusController;
 use App\Http\Controllers\frontend\LectureController;
+use App\Http\Controllers\frontend\MataPelajaranController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/courses', [KursusController::class, 'index']);
     Route::get('/lecture', [LectureController::class, 'index']);
     Route::get('/kelas', [KelasController::class, 'index']);
+    Route::get('/matapelajaran', [MataPelajaranController::class, 'index']);
 
 
     Route::get('/about', function () {
