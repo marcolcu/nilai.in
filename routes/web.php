@@ -6,6 +6,7 @@ use App\Http\Controllers\frontend\KelasController;
 use App\Http\Controllers\frontend\KursusController;
 use App\Http\Controllers\frontend\LectureController;
 use App\Http\Controllers\frontend\MataPelajaranController;
+use App\Http\Controllers\frontend\MateriController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/lecture', [LectureController::class, 'index']);
     Route::get('/kelas', [KelasController::class, 'index']);
     Route::get('/matapelajaran', [MataPelajaranController::class, 'index']);
+    Route::get('/materi', [MateriController::class, 'index']);
 
 
     Route::get('/about', function () {
