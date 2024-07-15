@@ -7,6 +7,7 @@ use App\Http\Controllers\frontend\KursusController;
 use App\Http\Controllers\frontend\LectureController;
 use App\Http\Controllers\frontend\MataPelajaranController;
 use App\Http\Controllers\frontend\MateriController;
+use App\Http\Controllers\frontend\SoalController;
 use App\Http\Controllers\frontend\UjianController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/matapelajaran', [MataPelajaranController::class, 'index']);
     Route::get('/materi', [MateriController::class, 'index']);
     Route::get('/ujian', [UjianController::class, 'index']);
+    Route::get('/soal', [SoalController::class, 'index']);
 
 
     Route::get('/about', function () {
