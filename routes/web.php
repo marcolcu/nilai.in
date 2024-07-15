@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\backend\AuthController;
+use App\Http\Controllers\frontend\AuthController;
 use App\Http\Controllers\frontend\DashboardController;
 use App\Http\Controllers\frontend\KelasController;
 use App\Http\Controllers\frontend\KursusController;
