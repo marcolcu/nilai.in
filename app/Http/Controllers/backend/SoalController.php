@@ -42,10 +42,10 @@ class SoalController extends Controller
         ]);
         $soal = new Soal();
 
-        $soal->pertanyaan = $input['pertanyaan'];
+        $soal->pertanyaan = $input['pertanyaan'];           //pakai $input agar validatornya terpakai
         $soal->tipe = $input['tipe'];
         $soal->kunci = $input['kunci'];
-        $soal->pilihan1 = $request->pilihan1;
+        $soal->pilihan1 = $request->pilihan1;               //pakai $request agar masi dapat berlanjut tanpa harus validator
         $soal->pilihan2 = $request->pilihan2;
         $soal->pilihan3 = $request->pilihan3;
         $soal->pilihan4 = $request->pilihan4;
