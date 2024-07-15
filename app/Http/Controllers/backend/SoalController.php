@@ -18,6 +18,16 @@ class SoalController extends Controller
         ], 200);
     }
 
+    public function soalSyncUjian(){
+        $soalUjian = Soal::join('ujians', 'soals.IDUjian', '=', 'ujians.id')
+        ->get();
+
+        return response()->json([
+            'soalUjian: ' => $soalUjian,
+        ], 200);
+    }
+
+
     public function store(Request $request){
         $input = $request->validate([
             'tipe' => ['required'],
