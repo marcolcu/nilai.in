@@ -42,7 +42,7 @@ class SoalController extends Controller
         $soal = new Soal();
 
         $soal->pertanyaan = $input['pertanyaan'];
-        $soal->benar = $input['benar'];
+        $soal->tipe = $input['tipe'];
         $soal->pilihan1 = $input['pilihan1'];
         $soal->pilihan2 = $input['pilihan2'];
         $soal->pilihan3 = $input['pilihan3'];
