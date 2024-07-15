@@ -18,6 +18,18 @@ class JawabanController extends Controller
         ], 200);
     }
 
+    public function jawawbanSyncProgressUjianSoal(){
+        $jawabanProgressUjianSoal = Jawaban::join('progressujians', 'jawabans.IDProgressUjian', '=', 'progressujians.id')
+        ->join('soals', 'soals.id', '=', 'jawabans.IDSoal')
+        ->select('soals.tipe AS tipe_soal', 'soals.pertanyaan AS pertanyaan', 'soals.pilihan1 AS pilihan1', 'soals.pilihan2 AS pilihan2', 'soals.pilihan3 AS pilihan3',
+        'soals.pilihan4 AS pilihan4', 'soals.pilihan5 AS pilihan5', 'soals.kunci AS kunci', 'jawabans.jawaban AS jawaban_murid', 'jawabans.jawaban AS jawaban_murid', 'progressujians.*')
+        ->get();
+
+        return response()->json([
+            'jawabanProgressUjianSoal: ' => $jawabanProgressUjianSoal,
+        ], 200);
+    }
+
     public function store(Request $request){
         $input = $request->validate([
             'jawaban' => ['required'],

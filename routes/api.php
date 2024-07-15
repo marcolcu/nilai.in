@@ -37,6 +37,7 @@ Route::controller(UserController::class)->group(function () {
 
 Route::controller(JawabanController::class)->group(function () {
     Route::get('jawabans', 'index');
+    Route::get('jawabanProgUjianSoal', 'jawawbanSyncProgressUjianSoal');
     Route::post('jawabans/create', 'store');
     Route::post('jawabans/update/{id}', 'update');
     Route::get('jawabans/read/{id}', 'show');
