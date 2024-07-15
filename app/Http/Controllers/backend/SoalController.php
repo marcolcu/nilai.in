@@ -86,7 +86,7 @@ class SoalController extends Controller
 
            $input = $request->validate([
                 'pertanyaan' => ['required'],
-                'benar' => ['required'],
+                'kunci' => ['required'],
                 'pilihan1' => ['required'],
                 'pilihan2' => ['required'],
                 'pilihan3' => ['required'],
@@ -96,7 +96,7 @@ class SoalController extends Controller
             ]);
 
             $soal->pertanyaan = $input['pertanyaan'];
-            $soal->benar = $input['benar'];
+            $soal->kunci = $input['kunci'];
             $soal->pilihan1 = $input['pilihan1'];
             $soal->pilihan2 = $input['pilihan2'];
             $soal->pilihan3 = $input['pilihan3'];
