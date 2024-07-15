@@ -32,7 +32,7 @@ class SoalSeeder extends Seeder
             'tipe'          => 'Esai',
             'pertanyaan'    => 'Siapa penemu ikan?',
             'kunci'         => 'Yang Maha Kuasa',
-            'IDUjian'         => 1,
+            'IDUjian'         => 2,
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -40,7 +40,7 @@ class SoalSeeder extends Seeder
             'tipe'          => 'Esai',
             'pertanyaan'    => 'Gimana cara buat web',
             'kunci'         => 'yah dibuat aja',
-            'IDUjian'         => 1,
+            'IDUjian'         => 3,
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);

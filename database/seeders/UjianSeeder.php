@@ -35,7 +35,7 @@ class UjianSeeder extends Seeder
             'nama'    => 'UTS Komputer',
             'deskripsi'         => 'Ini ujian akhir komputer',
             'kkm'         => '60',
-            'IDMataPelajaran'         => '1',
+            'IDMataPelajaran'         => '3',
             'created_at'    =>  Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at'    =>  Carbon::now()->format('Y-m-d H:i:s')
         ]);
