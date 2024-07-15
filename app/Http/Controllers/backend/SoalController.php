@@ -28,7 +28,7 @@ class SoalController extends Controller
             'pilihan3' => ['required'],
             'pilihan4' => ['required'],
             'pilihan5' => ['required'],
-            'IDMataPelajaran' => ['required'],
+            'IDUjian' => ['required'],
         ]);
         $soal = new Soal();
 
@@ -39,7 +39,7 @@ class SoalController extends Controller
         $soal->pilihan3 = $input['pilihan3'];
         $soal->pilihan4 = $input['pilihan4'];
         $soal->pilihan5 = $input['pilihan5'];
-        $soal->IDMataPelajaran = $input['IDMataPelajaran'];
+        $soal->IDUjian = $input['IDUjian'];
 
         if ($soal->save()){
             return response()->json([
@@ -81,7 +81,7 @@ class SoalController extends Controller
                 'pilihan3' => ['required'],
                 'pilihan4' => ['required'],
                 'pilihan5' => ['required'],
-                'IDMataPelajaran' => ['required'],
+                'IDUjian' => ['required'],
             ]);
 
             $soal->pertanyaan = $input['pertanyaan'];
@@ -91,7 +91,7 @@ class SoalController extends Controller
             $soal->pilihan3 = $input['pilihan3'];
             $soal->pilihan4 = $input['pilihan4'];
             $soal->pilihan5 = $input['pilihan5'];
-            $soal->IDMataPelajaran = $input['IDMataPelajaran'];
+            $soal->IDUjian = $input['IDUjian'];
 
             if ($soal->save()){
                 return response()->json([
