@@ -33,6 +33,7 @@ class SoalController extends Controller
 
 
     public function store(Request $request){
+        // dd($request);
         $input = $request->validate([
             'tipe' => ['required'],
             'pertanyaan' => ['required'],
@@ -44,11 +45,11 @@ class SoalController extends Controller
         $soal->pertanyaan = $input['pertanyaan'];
         $soal->tipe = $input['tipe'];
         $soal->kunci = $input['kunci'];
-        $soal->pilihan1 = $input['pilihan1'];
-        $soal->pilihan2 = $input['pilihan2'];
-        $soal->pilihan3 = $input['pilihan3'];
-        $soal->pilihan4 = $input['pilihan4'];
-        $soal->pilihan5 = $input['pilihan5'];
+        $soal->pilihan1 = $request->pilihan1;
+        $soal->pilihan2 = $request->pilihan2;
+        $soal->pilihan3 = $request->pilihan3;
+        $soal->pilihan4 = $request->pilihan4;
+        $soal->pilihan5 = $request->pilihan5;
         $soal->IDUjian = $input['IDUjian'];
 
         if ($soal->save()){
