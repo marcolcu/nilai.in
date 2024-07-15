@@ -649,61 +649,31 @@
             $('#skeleton-loader-table-user').show();
             $('#table-body-user').hide();
             $('#table-body-user').empty();
-
             $.ajax({
-                url: "api/ujians",
+                url: "api/ujianMapel",
                 type: "GET",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(response) {
                     allData = response["ujians: "];
                     if (allData && allData.length > 0) {
-                        $.ajax({
-                            url: "api/matapelajarans",
-                            type: "GET",
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            success: function(ujianResponse) {
-                                let ujianData = ujianResponse["matapelajarans: "];
-                                let ujianMap = {};
-                                ujianData.forEach(function(mapel) {
-                                    ujianMap[mapel.id] = {
-                                        nama_mapel: mapel.nama,
-                                    };
-                                });
-                                
-                                allData.forEach(function(ujian) {
-                                    let ujianInfo = ujianMap[ujian.IDMataPelajaran];
-                                    if (ujianInfo) {
-                                        ujian.nama_mapel = ujianInfo.nama_mapel;
-                                    }
-                                });
-                                
-                                allData.sort(function(a, b) {
-                                    return b.id - a.id;
-                                });
-
-                                renderTable(currentPage); // Panggil renderTable setelah semua data siap
-                                updatePaginationInfo(currentPage, allData.length);
-                                $('#pagination-container').show();
-                            },
-                            error: function(errors) {
-                                console.error(errors);
-                                $('.loading-spinner').addClass('hidden');
-                            }
+                        allData.sort(function(a, b) {
+                            return b.id - a.id;
                         });
+
+                        renderTable(currentPage);
+                        updatePaginationInfo(currentPage, allData.length);
+                        $('#pagination-container').show();
                     } else {
                         var row = `
-                            <tr>
-                                <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
-                                    No data found
-                                </th>
-                            </tr>
+                        <tr>
+                            <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
+                                No data found
+                            </th>
+                        </tr>
                         `;
                         $('#table-body-user').append(row);
                         $('#pagination-container').hide();
-                        $('#skeleton-loader-table-user').hide();
-                        $('#table-body-user').show();
                     }
                     $('#skeleton-loader-table-user').hide();
                     $('#table-body-user').show();
@@ -711,11 +681,11 @@
                 error: function(xhr, status, error) {
                     console.error(error);
                     var row = `
-                        <tr>
-                            <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
-                                Fetching data error..
-                            </th>
-                        </tr>
+                    <tr>
+                        <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
+                            Fetching data error..
+                        </th>
+                    </tr>
                     `;
                     $('#table-body-user').append(row);
                     $('#pagination-container').hide();
@@ -737,7 +707,7 @@
                             ${start + index + 1}
                         </th>
                         <td class="px-6 py-4">
-                            ${item.nama_mapel}
+                            ${item.mapel}
                         </td>
                         <td class="px-6 py-4">
                             ${item.nama}

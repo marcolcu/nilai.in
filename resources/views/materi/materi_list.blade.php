@@ -477,7 +477,7 @@
         $('#table-body-user').hide();
         $('#pagination-container').hide();
 
-        table_matapelajaran();
+        table_materi();
 
         $(document).on('click', '.save', function(e) {
             e.stopPropagation();
@@ -507,7 +507,7 @@
                     success: function(response) {
                         $('.btn-close').click();
                         $('#addMateri').find('.form-control').val('');
-                        table_matapelajaran();
+                        table_materi();
                     },
                     error: function(errors) {
                         console.error(errors);
@@ -547,7 +547,7 @@
                     success: function(response) {
                         $('.btn-close-edit').click();
                         $('#editMateri').find('.form-control').val('');
-                        table_matapelajaran();
+                        table_materi();
                     },
                     error: function(errors) {
                         console.error(errors);
@@ -624,7 +624,7 @@
                         </div>
                     `;
                     $('.alert-space').append(alert);
-                    table_matapelajaran();
+                    table_materi();
                     setTimeout(function() {
                         $('.alert-space').empty();
                     }, 3000);
@@ -666,65 +666,35 @@
         var entriesPerPage = 10;
         var allData = [];
         
-        function table_matapelajaran() {
+        function table_materi() {
             $('#skeleton-loader-table-user').show();
             $('#table-body-user').hide();
             $('#table-body-user').empty();
-
             $.ajax({
-                url: "api/materis",
+                url: "api/materiMapel",
                 type: "GET",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(response) {
-                    allData = response["materis: "];
+                    allData = response["$materiMataPelajaran: "];
                     if (allData && allData.length > 0) {
-                        $.ajax({
-                            url: "api/matapelajarans",
-                            type: "GET",
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            success: function(mapelResponse) {
-                                let mapelData = mapelResponse["matapelajarans: "];
-                                let mapelMap = {};
-                                mapelData.forEach(function(mapel) {
-                                    mapelMap[mapel.id] = {
-                                        nama_mapel: mapel.nama,
-                                    };
-                                });
-                                
-                                allData.forEach(function(matapelajaran) {
-                                    let mapelInfo = mapelMap[matapelajaran.IDMataPelajaran];
-                                    if (mapelInfo) {
-                                        matapelajaran.nama_mapel = mapelInfo.nama_mapel;
-                                    }
-                                });
-                                
-                                allData.sort(function(a, b) {
-                                    return b.id - a.id;
-                                });
-
-                                renderTable(currentPage); // Panggil renderTable setelah semua data siap
-                                updatePaginationInfo(currentPage, allData.length);
-                                $('#pagination-container').show();
-                            },
-                            error: function(errors) {
-                                console.error(errors);
-                                $('.loading-spinner').addClass('hidden');
-                            }
+                        allData.sort(function(a, b) {
+                            return b.id - a.id;
                         });
+
+                        renderTable(currentPage);
+                        updatePaginationInfo(currentPage, allData.length);
+                        $('#pagination-container').show();
                     } else {
                         var row = `
-                            <tr>
-                                <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
-                                    No data found
-                                </th>
-                            </tr>
+                        <tr>
+                            <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
+                                No data found
+                            </th>
+                        </tr>
                         `;
                         $('#table-body-user').append(row);
                         $('#pagination-container').hide();
-                        $('#skeleton-loader-table-user').hide();
-                        $('#table-body-user').show();
                     }
                     $('#skeleton-loader-table-user').hide();
                     $('#table-body-user').show();
@@ -732,11 +702,11 @@
                 error: function(xhr, status, error) {
                     console.error(error);
                     var row = `
-                        <tr>
-                            <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
-                                Fetching data error..
-                            </th>
-                        </tr>
+                    <tr>
+                        <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
+                            Fetching data error..
+                        </th>
+                    </tr>
                     `;
                     $('#table-body-user').append(row);
                     $('#pagination-container').hide();
@@ -758,7 +728,7 @@
                             ${start + index + 1}
                         </th>
                         <td class="px-6 py-4">
-                            ${item.nama_mapel}
+                            ${item.mapel}
                         </td>
                         <td class="px-6 py-4">
                             ${item.judul}

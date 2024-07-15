@@ -633,63 +633,31 @@
             $('#skeleton-loader-table-user').show();
             $('#table-body-user').hide();
             $('#table-body-user').empty();
-
             $.ajax({
-                url: "api/matapelajarans",
+                url: "api/mapelKelas",
                 type: "GET",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(response) {
-                    allData = response["matapelajarans: "];
+                    allData = response["mataPelajaranKelas: "];
                     if (allData && allData.length > 0) {
-                        $.ajax({
-                            url: "api/kelases",
-                            type: "GET",
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            success: function(kelasResponse) {
-                                let kelasData = kelasResponse["kelases: "];
-                                let kelasMap = {};
-                                kelasData.forEach(function(kelas) {
-                                    kelasMap[kelas.id] = {
-                                        tingkat: kelas.tingkat,
-                                        jurusan: kelas.jurusan
-                                    };
-                                });
-
-                                allData.forEach(function(matapelajaran) {
-                                    let kelasInfo = kelasMap[matapelajaran.IDKelas];
-                                    if (kelasInfo) {
-                                        matapelajaran.tingkat = kelasInfo.tingkat;
-                                        matapelajaran.jurusan = kelasInfo.jurusan;
-                                    }
-                                });
-
-                                allData.sort(function(a, b) {
-                                    return b.id - a.id;
-                                });
-
-                                renderTable(currentPage); // Panggil renderTable setelah semua data siap
-                                updatePaginationInfo(currentPage, allData.length);
-                                $('#pagination-container').show();
-                            },
-                            error: function(errors) {
-                                console.error(errors);
-                                $('.loading-spinner').addClass('hidden');
-                            }
+                        allData.sort(function(a, b) {
+                            return b.id - a.id;
                         });
+
+                        renderTable(currentPage);
+                        updatePaginationInfo(currentPage, allData.length);
+                        $('#pagination-container').show();
                     } else {
                         var row = `
-                            <tr>
-                                <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
-                                    No data found
-                                </th>
-                            </tr>
+                        <tr>
+                            <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
+                                No data found
+                            </th>
+                        </tr>
                         `;
                         $('#table-body-user').append(row);
                         $('#pagination-container').hide();
-                        $('#skeleton-loader-table-user').hide();
-                        $('#table-body-user').show();
                     }
                     $('#skeleton-loader-table-user').hide();
                     $('#table-body-user').show();
@@ -697,11 +665,11 @@
                 error: function(xhr, status, error) {
                     console.error(error);
                     var row = `
-                        <tr>
-                            <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
-                                Fetching data error..
-                            </th>
-                        </tr>
+                    <tr>
+                        <th scope="row" colspan="6" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap">
+                            Fetching data error..
+                        </th>
+                    </tr>
                     `;
                     $('#table-body-user').append(row);
                     $('#pagination-container').hide();
