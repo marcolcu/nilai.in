@@ -18,6 +18,17 @@ class UjianController extends Controller
         ], 200);
     }
 
+    public function ujianSyncMataPelajaran(){
+  
+        $ujians = Ujian::join('matapelajarans', 'ujians.IDMataPelajaran', '=', 'matapelajarans.id')
+        ->select('matapelajarans.nama AS mapel', 'matapelajarans.deskripsi AS deskripsi_mapel', 'ujians.*')
+        ->get();
+
+        return response()->json([
+            'ujians: ' => $ujians,
+        ], 200);
+    }
+
     public function store(Request $request){
         $input = $request->validate([
             'nama' => ['required'],

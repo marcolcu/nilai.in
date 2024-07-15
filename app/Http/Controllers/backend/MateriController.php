@@ -20,7 +20,9 @@ class MateriController extends Controller
 
 
     public function materiSyncMataPelajaran(){
-        $materiMataPelajaran = Materi::join('matapelajarans', 'materis.IDMataPelajaran', '=', 'matapelajarans.id')->get();
+        $materiMataPelajaran = Materi::join('matapelajarans', 'materis.IDMataPelajaran', '=', 'matapelajarans.id')
+        ->select('matapelajarans.nama AS mapel', 'matapelajarans.deskripsi AS deskripsi_mapel', 'materis.*')
+        ->get();
 
         return response()->json([
             '$materiMataPelajaran: ' => $materiMataPelajaran,

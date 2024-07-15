@@ -86,6 +86,7 @@ Route::controller(SoalController::class)->group(function () {
 
 Route::controller(UjianController::class)->group(function () {
     Route::get('ujians', 'index');
+    Route::get('ujianMapel', 'ujianSyncMataPelajaran');
     Route::post('ujians/create', 'store');
     Route::post('ujians/update/{id}', 'update');
     Route::get('ujians/read/{id}', 'show');
