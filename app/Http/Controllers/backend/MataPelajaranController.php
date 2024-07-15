@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\KelasDetail;
 use App\Models\MataPelajaran;
 use Illuminate\Http\Request;
 
@@ -36,9 +37,17 @@ class MataPelajaranController extends Controller
 
         $matapelajaran->nama = $input['nama'];
         $matapelajaran->deskripsi = $input['deskripsi'];
-        $matapelajaran->IDKelas = $input['IDKelas'];
 
         if ($matapelajaran->save()){
+            $idMapel = $matapelajaran->id;
+            if($request->IDKelas){
+                $kelasdetail = new KelasDetail();
+
+                $kelasdetail->IDMataPelajaran = $idMapel;
+                $kelasdetail->IDKelas = $request->IDKelas;
+
+                $kelasdetail->save();
+            }
             return response()->json([
                 'Message: ' => 'Success!',
                 'matapelajaran created: ' => $matapelajaran
