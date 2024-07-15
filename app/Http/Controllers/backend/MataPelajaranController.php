@@ -18,6 +18,15 @@ class MataPelajaranController extends Controller
         ], 200);
     }
 
+    public function materiSyncKelas(){
+        $mataPelajaranKelas = MataPelajaran::join('kelasdetails', 'matapelajarans.id', '=', 'kelasdetails.IDMataPelajaran')->join('kelases', 'kelases.id', '=', 'kelasdetails.IDKelas')
+        ->get();
+
+        return response()->json([
+            'mataPelajaranKelas: ' => $mataPelajaranKelas,
+        ], 200);
+    }
+
     public function store(Request $request){
         $input = $request->validate([
             'nama' => ['required'],

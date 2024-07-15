@@ -53,6 +53,7 @@ Route::controller(KelasController::class)->group(function () {
 
 Route::controller(MataPelajaranController::class)->group(function () {
     Route::get('matapelajarans', 'index');
+    Route::get('mapelKelas', 'materiSyncKelas');
     Route::post('matapelajarans/create', 'store');
     Route::post('matapelajarans/update/{id}', 'update');
     Route::get('matapelajarans/read/{id}', 'show');
