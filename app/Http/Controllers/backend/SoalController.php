@@ -37,11 +37,6 @@ class SoalController extends Controller
             'tipe' => ['required'],
             'pertanyaan' => ['required'],
             'kunci' => ['required'],
-            'pilihan1' => ['required'],
-            'pilihan2' => ['required'],
-            'pilihan3' => ['required'],
-            'pilihan4' => ['required'],
-            'pilihan5' => ['required'],
             'IDUjian' => ['required'],
         ]);
         $soal = new Soal();
