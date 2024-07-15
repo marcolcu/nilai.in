@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kelas;
 use App\Models\KelasDetail;
 use App\Models\MataPelajaran;
 use Illuminate\Http\Request;
@@ -32,6 +33,7 @@ class MataPelajaranController extends Controller
         $input = $request->validate([
             'nama' => ['required'],
             'deskripsi' => ['required'],
+            'tingkat' => ['required'],
         ]);
         $matapelajaran = new MataPelajaran();
 
@@ -47,6 +49,17 @@ class MataPelajaranController extends Controller
                 $kelasdetail->IDKelas = $request->IDKelas;
 
                 $kelasdetail->save();
+            }
+            else{
+                $kelases = Kelas::where('tingkat', $input['tingkat'])->get();
+                foreach ($kelases as $kelas) {
+                    $kelasdetail = new KelasDetail();
+                    
+                    $kelasdetail->IDMataPelajaran = $idMapel;
+                    $kelasdetail->IDKelas = $kelas->id;
+
+                    $kelasdetail->save();
+                }
             }
             return response()->json([
                 'Message: ' => 'Success!',
@@ -75,20 +88,48 @@ class MataPelajaranController extends Controller
     }
 
     public function update(Request $request, string $id){
-        $matapelajaran = matapelajaran::find($id);
+        $matapelajaran = MataPelajaran::find($id);
 
         if($matapelajaran){
-
            $input = $request->validate([
                 'nama' => ['required'],
                 'deskripsi' => ['required'],
+                'tingkat' => ['required'],
             ]);
                 
             $matapelajaran->nama = $input['nama'];
             $matapelajaran->deskripsi = $input['deskripsi'];
-            $matapelajaran->IDKelas = $input['IDKelas'];
 
             if ($matapelajaran->save()){
+                if($request->IDKelas){
+                    $kelasdetails = KelasDetail::where('IDMataPelajaran', $id)->get();
+                    foreach ($kelasdetails as $detail) {
+                        $detail->delete();
+                    }
+
+                    $kelasdetail = new KelasDetail();
+
+                    $kelasdetail->IDMataPelajaran = $matapelajaran->id;
+                    $kelasdetail->IDKelas = $request->IDKelas;
+    
+                    $kelasdetail->save();
+                }
+                else{
+                    $kelasdetails = KelasDetail::where('IDMataPelajaran', $id)->get();
+                    foreach ($kelasdetails as $detail) {
+                        $detail->delete();
+                    }
+                    
+                    $kelases = Kelas::where('tingkat', $input['tingkat'])->get();
+                    foreach ($kelases as $kelas) {
+                        $kelasdetail = new KelasDetail();
+                        
+                        $kelasdetail->IDMataPelajaran = $id;
+                        $kelasdetail->IDKelas = $kelas->id;
+
+                        $kelasdetail->save();
+                    }
+                }
                 return response()->json([
                     'Message: ' => 'Successfully updated!',
                     'matapelajaran created: ' => $matapelajaran
