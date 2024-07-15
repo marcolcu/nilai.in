@@ -43,6 +43,7 @@ class SoalController extends Controller
 
         $soal->pertanyaan = $input['pertanyaan'];
         $soal->tipe = $input['tipe'];
+        $soal->kunci = $input['kunci'];
         $soal->pilihan1 = $input['pilihan1'];
         $soal->pilihan2 = $input['pilihan2'];
         $soal->pilihan3 = $input['pilihan3'];
