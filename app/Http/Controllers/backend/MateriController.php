@@ -18,6 +18,15 @@ class MateriController extends Controller
         ], 200);
     }
 
+
+    public function materiSyncMataPelajaran(){
+        $materiMataPelajaran = Materi::join('matapelajarans', 'materis.IDMataPelajaran', '=', 'matapelajarans.id')->get();
+
+        return response()->json([
+            '$materiMataPelajaran: ' => $materiMataPelajaran,
+        ], 200);
+    }
+
     public function store(Request $request){
         $input = $request->validate([
             'judul' => ['required'],

@@ -61,6 +61,7 @@ Route::controller(MataPelajaranController::class)->group(function () {
 
 Route::controller(MateriController::class)->group(function () {
     Route::get('materis', 'index');
+    Route::get('materiMapel', 'materiSyncMataPelajaran');
     Route::post('materis/create', 'store');
     Route::post('materis/update/{id}', 'update');
     Route::get('materis/read/{id}', 'show');
