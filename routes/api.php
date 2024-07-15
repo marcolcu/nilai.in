@@ -71,6 +71,7 @@ Route::controller(MateriController::class)->group(function () {
 
 Route::controller(ProgressUjianController::class)->group(function () {
     Route::get('progressujians', 'index');
+    Route::get('progressujianUser', 'progressUjianSyncUjianUser');
     Route::post('progressujians/create', 'store');
     Route::post('progressujians/update/{id}', 'update');
     Route::get('progressujians/read/{id}', 'show');

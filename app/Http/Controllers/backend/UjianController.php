@@ -19,7 +19,6 @@ class UjianController extends Controller
     }
 
     public function ujianSyncMataPelajaran(){
-  
         $ujians = Ujian::join('matapelajarans', 'ujians.IDMataPelajaran', '=', 'matapelajarans.id')
         ->select('matapelajarans.nama AS mapel', 'matapelajarans.deskripsi AS deskripsi_mapel', 'ujians.*')
         ->get();
