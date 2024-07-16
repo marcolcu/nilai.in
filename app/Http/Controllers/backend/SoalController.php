@@ -85,23 +85,20 @@ class SoalController extends Controller
         if($soal){
 
            $input = $request->validate([
+                'tipe' => ['required'],
                 'pertanyaan' => ['required'],
                 'kunci' => ['required'],
-                'pilihan1' => ['required'],
-                'pilihan2' => ['required'],
-                'pilihan3' => ['required'],
-                'pilihan4' => ['required'],
-                'pilihan5' => ['required'],
                 'IDUjian' => ['required'],
             ]);
 
-            $soal->pertanyaan = $input['pertanyaan'];
+            $soal->pertanyaan = $input['pertanyaan'];           //pakai $input agar validatornya terpakai
+            $soal->tipe = $input['tipe'];
             $soal->kunci = $input['kunci'];
-            $soal->pilihan1 = $input['pilihan1'];
-            $soal->pilihan2 = $input['pilihan2'];
-            $soal->pilihan3 = $input['pilihan3'];
-            $soal->pilihan4 = $input['pilihan4'];
-            $soal->pilihan5 = $input['pilihan5'];
+            $soal->pilihan1 = $request->pilihan1;               //pakai $request agar masi dapat berlanjut tanpa harus validator
+            $soal->pilihan2 = $request->pilihan2;
+            $soal->pilihan3 = $request->pilihan3;
+            $soal->pilihan4 = $request->pilihan4;
+            $soal->pilihan5 = $request->pilihan5;
             $soal->IDUjian = $input['IDUjian'];
 
             if ($soal->save()){
