@@ -21,7 +21,9 @@ class ProgressUjianController extends Controller
     public function progressUjianSyncUjianUser(){
         $progressUjianUser = ProgressUjian::join('ujians', 'ujians.id', '=', 'progressujians.IDUjian')
         ->join('users', 'users.id', '=', 'progressujians.IDUser')
-        ->select('users.nama AS nama_murid','users.email AS email','users.peran AS peran', 'ujians.nama AS nama_ujian', 'ujians.deskripsi AS deskripsi_ujian', 'ujians.kkm AS kkm_ujian', 'progressujians.nilai','progressujians.catatan AS catatan_ujian')
+        ->select('users.id AS id_murid', 'users.nama AS nama_murid','users.email AS email','users.peran AS peran',
+        'ujians.id AS id_ujian', 'ujians.nama AS nama_ujian', 'ujians.deskripsi AS deskripsi_ujian', 'ujians.kkm AS kkm_ujian',
+        'progressujians.id AS id_progressujian', 'progressujians.nilai','progressujians.catatan AS catatan_ujian')
         ->get();
 
         return response()->json([
