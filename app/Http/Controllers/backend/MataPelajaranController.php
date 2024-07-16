@@ -73,8 +73,12 @@ class MataPelajaranController extends Controller
     }
 
     public function show(string $id){
-
-        $matapelajaran = matapelajaran::find($id);
+        $matapelajaran = matapelajaran::join('kelasdetails', 'matapelajarans.id', '=', 'kelasdetails.IDMataPelajaran')
+        ->join('kelases', 'kelases.id', '=', 'kelasdetails.IDKelas')
+        ->where('matapelajarans.id', '=', $id)
+        ->select('matapelajarans.id AS id_mapel', 'matapelajarans.nama AS nama_mapel', 'matapelajarans.deskripsi AS mapel_deskripsi',
+            'kelases.id AS id_kelas', 'kelases.tingkat AS tingkat_kelas', 'kelases.id AS jurusan_kelas', 'kelases.wali AS wali_kelas', 'kelases.ketua AS ketua_kelas')
+        ->first();
 
         if ($matapelajaran){
             return response()->json([
