@@ -603,7 +603,7 @@
 
                 // Set pilihan1 to pilihan5 to null if tipe is 'Esai'
                 if (tipeValue === 'Esai' && (inputName === 'pilihan1' || inputName === 'pilihan2' || inputName === 'pilihan3' || inputName === 'pilihan4' || inputName === 'pilihan5')) {
-                    inputValue = "";
+                    inputValue = null;
                 }
 
                 // Ignore validation for pilihan1 to pilihan5
