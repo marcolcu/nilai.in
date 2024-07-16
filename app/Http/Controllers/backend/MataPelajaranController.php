@@ -42,11 +42,12 @@ class MataPelajaranController extends Controller
 
         if ($matapelajaran->save()){
             $idMapel = $matapelajaran->id;
-            if($request->IDKelas){
+            if($request->jurusan){
                 $kelasdetail = new KelasDetail();
+                $kelas = Kelas::where('tingkat', $input['tingkat'])->where('jurusan', $request->jurusan)->first();
 
                 $kelasdetail->IDMataPelajaran = $idMapel;
-                $kelasdetail->IDKelas = $request->IDKelas;
+                $kelasdetail->IDKelas = $kelas->id;
 
                 $kelasdetail->save();
             }
@@ -101,8 +102,9 @@ class MataPelajaranController extends Controller
             $matapelajaran->deskripsi = $input['deskripsi'];
 
             if ($matapelajaran->save()){
-                if($request->IDKelas){
+                if($request->jurusan){
                     $kelasdetails = KelasDetail::where('IDMataPelajaran', $id)->get();
+                    $kelas = Kelas::where('tingkat', $input['tingkat'])->where('jurusan', $request->jurusan)->first();
                     foreach ($kelasdetails as $detail) {
                         $detail->delete();
                     }
@@ -110,7 +112,7 @@ class MataPelajaranController extends Controller
                     $kelasdetail = new KelasDetail();
 
                     $kelasdetail->IDMataPelajaran = $matapelajaran->id;
-                    $kelasdetail->IDKelas = $request->IDKelas;
+                    $kelasdetail->IDKelas = $kelas->id;
     
                     $kelasdetail->save();
                 }
