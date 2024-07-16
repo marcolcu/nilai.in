@@ -76,10 +76,9 @@ class ProgressUjianController extends Controller
         $progressujian = progressujian::find($id);
 
         if($progressujian){
-
            $input = $request->validate([
                 'IDUjian' => ['required'],
-                'Nilai' => ['required'],
+                'nilai' => ['required'],
                 'catatan' => ['required'],
                 'IDUser' => ['required'],
             ]);
