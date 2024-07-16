@@ -39,11 +39,11 @@ class MataPelajaranController extends Controller
 
         $matapelajaran->nama = $input['nama'];
         $matapelajaran->deskripsi = $input['deskripsi'];
-        $jurusan = strtolower($request->jurusan);
 
         if ($matapelajaran->save()){
             $idMapel = $matapelajaran->id;
-            if($jurusan){
+            if($request->jurusan){
+                $jurusan = strtolower($request->jurusan);
                 $kelasdetail = new KelasDetail();
                 $kelas = Kelas::where('tingkat', $input['tingkat'])->where('jurusan', $jurusan)->first();
 
@@ -77,7 +77,7 @@ class MataPelajaranController extends Controller
         ->join('kelases', 'kelases.id', '=', 'kelasdetails.IDKelas')
         ->where('matapelajarans.id', '=', $id)
         ->select('matapelajarans.id AS id_mapel', 'matapelajarans.nama AS nama_mapel', 'matapelajarans.deskripsi AS mapel_deskripsi',
-            'kelases.id AS id_kelas', 'kelases.tingkat AS tingkat_kelas', 'kelases.id AS jurusan_kelas', 'kelases.wali AS wali_kelas', 'kelases.ketua AS ketua_kelas')
+            'kelases.id AS id_kelas', 'kelases.tingkat AS tingkat', 'kelases.jurusan AS jurusan', 'kelases.wali AS wali_kelas', 'kelases.ketua AS ketua_kelas')
         ->first();
 
         if ($matapelajaran){
@@ -105,10 +105,10 @@ class MataPelajaranController extends Controller
                 
             $matapelajaran->nama = $input['nama'];
             $matapelajaran->deskripsi = $input['deskripsi'];
-            $jurusan = strtolower($request->jurusan);
 
             if ($matapelajaran->save()){
-                if($jurusan){
+                if($request->jurusan){
+                    $jurusan = strtolower($request->jurusan);
                     $kelasdetails = KelasDetail::where('IDMataPelajaran', $id)->get();
                     $kelas = Kelas::where('tingkat', $input['tingkat'])->where('jurusan', $jurusan)->first();
                     foreach ($kelasdetails as $detail) {
