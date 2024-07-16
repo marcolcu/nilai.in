@@ -584,7 +584,7 @@
 
         function openDeleteModal(id) {
             $.ajax({
-                url: "api/matapelajarans/delete/" + id,
+                url: "api/progressujians/delete/" + id,
                 type: "GET",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
