@@ -159,6 +159,20 @@
                     Soal
                 </a>
             </li>
+            <li>
+                <a href="/progressujian" role="button"
+                    class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                    <div class="grid mr-4 place-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true" class="w-5 h-5">
+                            <path fill-rule="evenodd"
+                                d="M2.25 4.5A3.25 3.25 0 015.5 1.25h13a3.25 3.25 0 013.25 3.25v11a3.25 3.25 0 01-3.25 3.25h-4.393l-2.866 2.974a.75.75 0 01-1.082 0L7.893 18.5H5.5a3.25 3.25 0 01-3.25-3.25v-11zm3.25-.75a.75.75 0 00-.75.75v11c0 .966.784 1.75 1.75 1.75h2.607a.75.75 0 01.541.23L12 19.568l2.602-2.838a.75.75 0 01.542-.23H18.5c.966 0 1.75-.784 1.75-1.75v-11a.75.75 0 00-.75-.75h-13z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    Progress Ujian
+                </a>
+            </li>
         </ul>
     </div>
 </aside>

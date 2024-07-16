@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="mb-10 flex justify-between items-center">
-    <h1 class="font-bold text-2xl">List Mata Pelajaran</h1>
+    <h1 class="font-bold text-2xl">List Progress Ujian</h1>
     <button data-modal-target="kelas-modal" data-modal-toggle="kelas-modal"
         class="button-create flex text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
         type="button">
@@ -11,18 +11,18 @@
                 d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                 clip-rule="evenodd"></path>
         </svg>
-        Tambah Mata Pelajaran
+        Tambah Progress Ujian
     </button>
     <button data-modal-target="kursus-edit-modal" data-modal-toggle="kursus-edit-modal"
         class="hidden button-edit-open text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
         type="button">
-        Edit Kelas
+        Edit Progress Ujian
     </button>
 
     <button data-modal-target="kursus-delete-modal" data-modal-toggle="kursus-delete-modal"
         class="hidden button-delete-open text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
         type="button">
-        Hapus Kelas
+        Hapus Progress Ujian
     </button>
 </div>
 
@@ -39,13 +39,16 @@
                     No
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nama
+                    Nama Ujian
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Kelas
+                    Nama Murid
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Deskripsi
+                    KKM
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Nilai
                 </th>
                 <th scope="col" class="px-6 py-3">
                     <span class="sr-only">Edit</span>
@@ -230,7 +233,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
                 <h3 class="text-lg font-semibold text-gray-900">
-                    Tambah Mata Pelajaran
+                    Tambah Progress Ujian
                 </h3>
                 <button type="button"
                     class="btn-close text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
@@ -244,92 +247,7 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <div class="p-4 md:p-5 relative" id="addMapel">
-                <div class="grid gap-4 mb-4 grid-cols-2">
-                    <div class="col-span-2">
-                        <div class="alert-kursus hidden flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
-                            role="alert">
-                            <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                            </svg>
-                            <span class="sr-only">Info</span>
-                            <div>
-                                <span class="font-medium">Danger alert!</span> All form need to get filled
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-2">
-                        <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
-                        <input type="text" id="nama" name="nama"
-                            class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="John" required />
-                    </div>
-                    <div class="col-span-2">
-                        <label for="tingkat" class="block mb-2 text-sm font-medium text-gray-900 ">Tingkat</label>
-                        <select id="tingkat" name="tingkat"
-                            class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                            <option value="" selected>Pilih Tingkat</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                        </select>
-                    </div>
-                    <div class="col-span-2">
-                        <label for="IDKelas" class="block mb-2 text-sm font-medium text-gray-900 ">Jurusan</label>
-                        <select id="IDKelas" name="IDKelas"
-                            class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                            <option value="" selected>Pilih Jurusan</option>
-                            <option value="IPA">IPA</option>
-                            <option value="IPS">IPS</option>
-                        </select>
-                    </div>
-                    <div class="col-span-2">
-                        <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
-                        <textarea id="deskripsi" rows="4" name="deskripsi"
-                            class="form-control block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Deskripsi Mata Pelajaran"></textarea>
-                    </div>
-                </div>
-                <button
-                    class="save text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                    <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    Tambah Mata Pelajaran Baru
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="kursus-edit-modal" tabindex="-1" aria-hidden="true"
-    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-md max-h-full">
-        <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow">
-            <!-- Modal header -->
-            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
-                <h3 class="text-lg font-semibold text-gray-900">
-                    Edit Mata Pelajaran
-                </h3>
-                <button type="button"
-                    class="btn-close-edit text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                    data-modal-toggle="kursus-edit-modal">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-            </div>
-            <!-- Modal body -->
-            <div class="p-4 md:p-5 relative" id="editMapel">
+            <div class="p-4 md:p-5 relative" id="addProgressUjian">
                 <div
                     class="loading-spinner hidden absolute inset-0 flex justify-center items-center bg-white bg-opacity-75 z-10">
                     <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -359,33 +277,119 @@
                         </div>
                     </div>
                     <div class="col-span-2">
-                        <label for="edit-nama" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
-                        <input type="text" id="edit-nama" name="nama"
+                        <label for="IDUjian" class="block mb-2 text-sm font-medium text-gray-900 ">Ujian</label>
+                        <select id="IDUjian" name="IDUjian"
+                            class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        </select>
+                    </div>
+                    <div class="col-span-2">
+                        <label for="IDUser" class="block mb-2 text-sm font-medium text-gray-900 ">Murid</label>
+                        <select id="IDUser" name="IDUser"
+                            class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        </select>
+                    </div>
+                    <div class="col-span-2">
+                        <label for="nilai" class="block mb-2 text-sm font-medium text-gray-900 ">Nilai</label>
+                        <input type="text" id="nilai" name="nilai"
                             class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="John" required />
+                            placeholder="Nilai" required />
                     </div>
                     <div class="col-span-2">
-                        <label for="edit-tingkat" class="block mb-2 text-sm font-medium text-gray-900 ">Tingkat</label>
-                        <select id="edit-tingkat" name="tingkat"
+                        <label for="catatan" class="block mb-2 text-sm font-medium text-gray-900 ">Catatan</label>
+                        <input type="text" id="catatan" name="catatan"
+                            class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="Catatan" required />
+                    </div>
+                </div>
+                <button
+                    class="save text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    Tambah Progress Ujian Baru
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="kursus-edit-modal" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                <h3 class="text-lg font-semibold text-gray-900">
+                    Edit Progress Ujian
+                </h3>
+                <button type="button"
+                    class="btn-close-edit text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                    data-modal-toggle="kursus-edit-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-4 md:p-5 relative" id="editProgressUjian">
+                <div
+                    class="loading-spinner hidden absolute inset-0 flex justify-center items-center bg-white bg-opacity-75 z-10">
+                    <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                        viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                            fill="currentColor" />
+                        <path
+                            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                            fill="currentFill" />
+                    </svg>
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="grid gap-4 mb-4 grid-cols-2">
+                    <div class="col-span-2">
+                        <div class="alert-kursus hidden flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
+                            role="alert">
+                            <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                            </svg>
+                            <span class="sr-only">Info</span>
+                            <div>
+                                <span class="font-medium">Danger alert!</span> All form need to get filled
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-2">
+                        <label for="edit-IDUjian" class="block mb-2 text-sm font-medium text-gray-900 ">Ujian</label>
+                        <select id="edit-IDUjian" name="IDUjian"
                             class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                            <option value="" selected>Pilih Tingkat</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
                         </select>
                     </div>
                     <div class="col-span-2">
-                        <label for="edit-IDKelas" class="block mb-2 text-sm font-medium text-gray-900 ">Kelas</label>
-                        <select id="edit-IDKelas" name="IDKelas"
+                        <label for="edit-IDUser" class="block mb-2 text-sm font-medium text-gray-900 ">Murid</label>
+                        <select id="edit-IDUser" name="IDUser"
                             class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         </select>
                     </div>
                     <div class="col-span-2">
-                        <label for="edit-deskripsi"
-                            class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
-                        <textarea id="edit-deskripsi" rows="4" name="deskripsi"
-                            class="form-control block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Deskripsi Mata Pelajaran"></textarea>
+                        <label for="edit-nilai" class="block mb-2 text-sm font-medium text-gray-900 ">Nilai</label>
+                        <input type="text" id="edit-nilai" name="nilai"
+                            class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="Nilai" required />
+                    </div>
+                    <div class="col-span-2">
+                        <label for="edit-catatan" class="block mb-2 text-sm font-medium text-gray-900 ">Catatan</label>
+                        <input type="text" id="edit-catatan" name="catatan"
+                            class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="Catatan" required />
                     </div>
                 </div>
                 <button
@@ -396,7 +400,7 @@
                             d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                             clip-rule="evenodd"></path>
                     </svg>
-                    Edit Kelas
+                    Edit Progress Ujian
                 </button>
             </div>
         </div>
@@ -423,7 +427,7 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
-                <h3 class="mb-5 text-lg font-normal text-gray-500">Apakah kamu yakin ingin menghapus mata pelajaran ini?
+                <h3 class="mb-5 text-lg font-normal text-gray-500">Apakah kamu yakin ingin menghapus progress ujian ini?
                 </h3>
                 <button data-modal-hide="kursus-delete-modal" type="button"
                     class="delete-course text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
@@ -450,16 +454,20 @@
         $('#table-body-user').hide();
         $('#pagination-container').hide();
 
-        table_matapelajaran();
+        table_progress_ujian();
 
         $(document).on('click', '.save', function(e) {
             e.stopPropagation();
             let datas = {};
             let isValid = true;
 
-            $('#addMapel').find('.form-control').each(function() {
+            $('#addProgressUjian').find('.form-control').each(function() {
                 let inputValue = $(this).val();
                 const inputName = $(this).attr('name');
+
+                if (inputName === 'IDUjian' || inputName === 'IDUser') {
+                    inputValue = Number(inputValue);
+                }
 
                 if (!inputValue) {
                     isValid = false;
@@ -471,15 +479,15 @@
             if (isValid) {
                 $('.alert-kursus').addClass('hidden');
                 $.ajax({
-                    url: "/api/matapelajarans/create",
+                    url: "/api/progressujians/create",
                     type: "POST",
                     data: JSON.stringify(datas),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function(response) {
                         $('.btn-close').click();
-                        $('#addMapel').find('.form-control').val('');
-                        table_matapelajaran();
+                        $('#addProgressUjian').find('.form-control').val('');
+                        table_progress_ujian();
                     },
                     error: function(errors) {
                         console.error(errors);
@@ -496,13 +504,10 @@
             let datas = {};
             let isValid = true;
 
-            $('#editMapel').find('.form-control').each(function() {
-                let inputValue = $(this).val();
+            $('#editProgressUjian').find('.form-control').each(function() {
+                const inputType = $(this).attr('type');
+                const inputValue = $(this).val();
                 const inputName = $(this).attr('name');
-
-                if (inputName === 'IDKelas') {
-                    inputValue = Number(inputValue);
-                }
 
                 if (!inputValue) {
                     isValid = false;
@@ -514,15 +519,15 @@
             if (isValid) {
                 $('.alert-kursus').addClass('hidden');
                 $.ajax({
-                    url: "/api/matapelajarans/update/" + id,
+                    url: "/api/progressujians/update/" + id,
                     type: "POST",
                     data: JSON.stringify(datas),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function(response) {
                         $('.btn-close-edit').click();
-                        $('#editMapel').find('.form-control').val('');
-                        table_matapelajaran();
+                        $('#editProgressUjian').find('.form-control').val('');
+                        table_progress_ujian();
                     },
                     error: function(errors) {
                         console.error(errors);
@@ -547,7 +552,7 @@
         });
 
         $(document).on('click', '.button-create', function() {
-            // openCreateModal();
+            openCreateModal();
         });
 
         $(document).on('click', '.edit-button', function() {
@@ -563,7 +568,7 @@
         });
 
         $(document).on('click', '.btn-close-edit', function() {
-            $('#editMapel').find('.form-control').val('');
+            $('#editProgressUjian').find('.form-control').val('');
         });
 
         $(document).on('click', '.delete-course', function() {
@@ -572,9 +577,9 @@
         });
 
         function openCreateModal() {
-            $('#addMapel').find('.form-control').prop('disabled', true);
+            $('#addProgressUjian').find('.form-control').prop('disabled', true);
             $('.loading-spinner').removeClass('hidden');
-            // select_api('#IDKelas', '#addMapel');
+            select_api('#IDUjian', '#IDUser', '#addProgressUjian');
         }
 
         function openDeleteModal(id) {
@@ -599,7 +604,7 @@
                         </div>
                     `;
                     $('.alert-space').append(alert);
-                    table_matapelajaran();
+                    table_progress_ujian();
                     setTimeout(function() {
                         $('.alert-space').empty();
                     }, 3000);
@@ -611,24 +616,31 @@
         }
         
         function openEditModal(id) {
-            $('#editMapel').find('.form-control').prop('disabled', true);
+            $('#editProgressUjian').find('.form-control').prop('disabled', true);
             $('.loading-spinner').removeClass('hidden');
             $('.btn-close-edit').click();
+
             $.ajax({
-                url: "api/matapelajarans/read/" + id,
+                url: "api/progressujians/read/" + id,
                 type: "GET",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(response) {
-                    let data = response["matapelajaran: "].IDKelas;
-                    $('#editMapel').find('.form-control').each(function() {
+                    const progressUjian = response["progressujian: "];
+                    const selectedMapelId = progressUjian.IDUjian;
+                    const selectedUserId = progressUjian.IDUser;
+
+                    console.log(selectedMapelId, selectedUserId);
+
+                    // Populate input fields with existing data
+                    $('#editProgressUjian').find('.form-control').each(function() {
                         const inputName = $(this).attr('name');
-                        const inputValue = response["matapelajaran: "][inputName];
-                        
+                        const inputValue = progressUjian[inputName];
                         $("#" + $(this).attr('id')).val(inputValue);
                     });
 
-                    select_api('#edit-IDKelas', '#editMapel', data);
+                    // Populate select elements
+                    select_api('#edit-IDUjian', '#edit-IDUser', '#editProgressUjian', selectedMapelId, selectedUserId);
                 },
                 error: function(errors) {
                     console.error(errors);
@@ -641,20 +653,20 @@
         var entriesPerPage = 10;
         var allData = [];
         
-        function table_matapelajaran() {
+        function table_progress_ujian() {
             $('#skeleton-loader-table-user').show();
             $('#table-body-user').hide();
             $('#table-body-user').empty();
             $.ajax({
-                url: "api/mapelKelas",
+                url: "api/progressujianUser",
                 type: "GET",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(response) {
-                    allData = response["mataPelajaranKelas: "];
+                    allData = response["progressUjianUser: "];
                     if (allData && allData.length > 0) {
                         allData.sort(function(a, b) {
-                            return b.IDMataPelajaran - a.IDMataPelajaran;
+                            return b.id - a.id;
                         });
 
                         renderTable(currentPage);
@@ -703,23 +715,26 @@
                             ${start + index + 1}
                         </th>
                         <td class="px-6 py-4">
-                            ${item.nama}
+                            ${item.nama_ujian}
                         </td>
-                        <td class="px-6 py-4 uppercase">
-                            ${item.tingkat} - ${item.jurusan.toUpperCase()}
+                        <td class="px-6 py-4">
+                            ${item.nama_murid}
+                        </td>
+                        <td class="px-6 py-4">
+                            ${item.kkm_ujian}
                         </td>
                         <td class="px-6 py-4 capitalize">
-                            ${item.deskripsi}
+                            ${item.nilai}
                         </td>
                         <td class="px-6 py-4 text-right flex">
                             <button
                                 class="edit-button block me-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                type="button" data-id="${item.IDMataPelajaran}">
+                                type="button" data-id="${item.id_progressujian}">
                                 <i class="fa-solid fa-pen"></i>
                             </button>
                             <button
                                 class="delete-button block me-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                type="button" data-id="${item.IDMataPelajaran}">
+                                type="button" data-id="${item.id_progressujian}">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </td>
@@ -728,6 +743,7 @@
                 $('#table-body-user').append(row);
             });
         }
+
         function updatePaginationInfo(page, totalEntries) {
             var startEntry = (page - 1) * entriesPerPage + 1;
             var endEntry = Math.min(startEntry + entriesPerPage - 1, totalEntries);
@@ -750,40 +766,63 @@
             }
         }
 
-        function select_api(id, place, selectedId = null) {
-            $.ajax({
-                url: "api/kelases",
+        function select_api(id1, id2, place, selectedId1 = null, selectedId2 = null) {
+            const apiUjians = $.ajax({
+                url: "api/ujians",
                 type: "GET",
                 contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function(response) {
-                    const selectElement = $(id);
-                    selectElement.empty(); // Clear existing options
+                dataType: "json"
+            });
 
-                    // Add a default "Pilih Tingkat Kelas" option
-                    selectElement.append('<option value="" selected>Pilih Jurusan</option>');
+            const apiUsers = $.ajax({
+                url: "api/users",
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            });
 
-                    // Populate new options
-                    response["kelases: "].forEach(kelas => {
-                        const optionText = `${kelas.jurusan.toUpperCase()}`;
-                        const optionValue = kelas.id;
-                        const option = `<option value="${optionValue}">${optionText}</option>`;
-                        selectElement.append(option);
-                    });
+            Promise.all([apiUjians, apiUsers]).then(responses => {
+                const [ujiansResponse, usersResponse] = responses;
 
-                    if (selectedId) {
-                        selectElement.val(selectedId);
-                    } else {
-                        selectElement.val(''); // Ensure no selection is made
-                    }
+                const selectElement1 = $(id1);
+                selectElement1.empty();
+                selectElement1.append('<option value="" selected>Pilih Mata Pelajaran</option>');
 
-                    $(place).find('.form-control').prop('disabled', false);
-                    $('.loading-spinner').addClass('hidden');
-                },
-                error: function(errors) {
-                    console.error(errors);
-                    $('.loading-spinner').addClass('hidden');
+                ujiansResponse["ujians: "].forEach(ujian => {
+                    const optionText = `${ujian.nama}`;
+                    const optionValue = ujian.id;
+                    const option = `<option value="${optionValue}">${optionText}</option>`;
+                    selectElement1.append(option);
+                });
+
+                if (selectedId1) {
+                    selectElement1.val(selectedId1);
+                } else {
+                    selectElement1.val('');
                 }
+
+                const selectElement2 = $(id2);
+                selectElement2.empty();
+                selectElement2.append('<option value="" selected>Pilih User</option>');
+
+                usersResponse["users: "].forEach(user => {
+                    const optionText = `${user.nama}`;
+                    const optionValue = user.id;
+                    const option = `<option value="${optionValue}">${optionText}</option>`;
+                    selectElement2.append(option);
+                });
+
+                if (selectedId2) {
+                    selectElement2.val(selectedId2);
+                } else {
+                    selectElement2.val('');
+                }
+
+                $(place).find('.form-control').prop('disabled', false);
+                $('.loading-spinner').addClass('hidden');
+            }).catch(errors => {
+                console.error(errors);
+                $('.loading-spinner').addClass('hidden');
             });
         }
         
