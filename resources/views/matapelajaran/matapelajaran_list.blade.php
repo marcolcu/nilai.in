@@ -375,9 +375,12 @@
                         </select>
                     </div>
                     <div class="col-span-2">
-                        <label for="edit-IDKelas" class="block mb-2 text-sm font-medium text-gray-900 ">Kelas</label>
-                        <select id="edit-IDKelas" name="IDKelas"
+                        <label for="edit-jurusan" class="block mb-2 text-sm font-medium text-gray-900 ">Kelas</label>
+                        <select id="edit-jurusan" name="jurusan"
                             class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <option value="" selected>Pilih Jurusan</option>
+                            <option value="IPA">IPA</option>
+                            <option value="IPS">IPS</option>
                         </select>
                     </div>
                     <div class="col-span-2">
@@ -623,7 +626,11 @@
                     let data = response["matapelajaran: "].IDKelas;
                     $('#editMapel').find('.form-control').each(function() {
                         const inputName = $(this).attr('name');
-                        const inputValue = response["matapelajaran: "][inputName];
+                        let inputValue = response["matapelajaran: "][inputName];
+
+                        if(inputName === "jurusan") {
+                            inputValue = inputValue.toUpperCase();
+                        }
                         
                         $("#" + $(this).attr('id')).val(inputValue);
                     });
