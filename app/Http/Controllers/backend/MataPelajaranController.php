@@ -77,7 +77,7 @@ class MataPelajaranController extends Controller
         ->join('kelases', 'kelases.id', '=', 'kelasdetails.IDKelas')
         ->where('matapelajarans.id', '=', $id)
         ->select('matapelajarans.id AS id_mapel', 'matapelajarans.nama AS nama_mapel', 'matapelajarans.deskripsi AS mapel_deskripsi',
-            'kelases.id AS id_kelas', 'kelases.tingkat AS tingkat_kelas', 'kelases.id AS jurusan_kelas', 'kelases.wali AS wali_kelas', 'kelases.ketua AS ketua_kelas')
+            'kelases.id AS id_kelas', 'kelases.tingkat AS tingkat_kelas', 'kelases.jurusan AS jurusan_kelas', 'kelases.wali AS wali_kelas', 'kelases.ketua AS ketua_kelas')
         ->first();
 
         if ($matapelajaran){
