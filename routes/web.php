@@ -33,8 +33,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/matapelajaran', [MataPelajaranController::class, 'index']);
     Route::get('/materi', [MateriController::class, 'index']);
     Route::get('/ujian', [UjianController::class, 'index']);
-    Route::get('/soal', [SoalController::class, 'index']);
-    Route::get('/progressujian', [ProgressUjianController::class, 'index']);
+    // Route::get('/soal', [SoalController::class, 'index']);
+    // Route::get('/progressujian', [ProgressUjianController::class, 'index']);
 
 
     Route::get('/about', function () {
