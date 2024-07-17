@@ -132,8 +132,9 @@
                                         class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                         >
                                         <option value="">Select Role</option>
-                                        <option value="admin">Guru</option>
-                                        <option value="user">Wali Kelas</option>
+                                        <option value="guru">Guru</option>
+                                        <option value="wali kelas">Wali Kelas</option>
+                                        <option value="murid">Murid</option>
                                     </select>
                                 </div>
                                 <div>
@@ -184,14 +185,12 @@
             $("#register").on('click', function() {
                 $("#registerData").hide();
                 $("#loginData").show();
-                console.log('a')
             });
 
             $("#login").on('click', function(e) {
                 e.preventDefault();
                 $("#loginData").hide();
                 $("#registerData").show();
-                console.log('b')
             });
 
             $("#submit").on('click', function(event) {
@@ -201,7 +200,6 @@
                     event.preventDefault();
                     $('#alert').show();
                 } else {
-                    console.log('c')
                     $('#alert').hide();
                     $('#success').show();
                     $("#registerForm").submit();
