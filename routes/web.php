@@ -10,6 +10,7 @@ use App\Http\Controllers\frontend\MateriController;
 use App\Http\Controllers\frontend\ProgressUjianController;
 use App\Http\Controllers\frontend\SoalController;
 use App\Http\Controllers\frontend\UjianController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthController::class, 'getLogin'])->name('login');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'guru'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/courses', [KursusController::class, 'index']);
     Route::get('/lecture', [LectureController::class, 'index']);
@@ -40,6 +41,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/about', function () {
         return view('aboutus');
     });
+});
+
+Route::middleware(['auth', 'murid'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index']);
 });
 
 Route::get('/login', [AuthController::class, 'getLogin']);

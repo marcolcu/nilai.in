@@ -9,7 +9,6 @@ use App\Http\Controllers\backend\ProgressUjianController;
 use App\Http\Controllers\backend\SoalController;
 use App\Http\Controllers\backend\UjianController;
 use App\Http\Controllers\backend\UserController;
-use App\Models\KelasDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

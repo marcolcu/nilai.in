@@ -27,7 +27,12 @@ class AuthController extends Controller
         ]);
 
         if ($valid) {
-            return redirect("/dashboard");
+            if (auth()->user()->peran == "guru" || auth()->user()->peran == "admin") {
+                return redirect("/dashboard");
+            }
+            else{
+                return redirect("/home");
+            }
         } else {
             return redirect()->back()->withErrors('Authentication Error');
         }
