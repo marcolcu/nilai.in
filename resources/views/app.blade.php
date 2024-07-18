@@ -57,6 +57,7 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
     @yield('js')
 </body>
 

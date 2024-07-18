@@ -998,34 +998,47 @@
     <div class="hidden p-4 rounded-lg bg-gray-50" id="progress" role="tabpanel" aria-labelledby="progress-tab">
         <div class="mb-10 flex justify-between items-center">
             <h1 class="font-bold text-2xl">List Progress Ujian</h1>
-            <button data-modal-target="progress-modal" data-modal-toggle="progress-modal"
-                class="button-create-progress flex text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                type="button">
-                <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                        clip-rule="evenodd"></path>
-                </svg>
-                Tambah Progress Ujian
-            </button>
+            <div class="flex gap-2">
+                <button data-modal-target="progress-modal" data-modal-toggle="progress-modal"
+                    class="button-create-progress flex text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    type="button">
+                    <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    Tambah Progress Ujian
+                </button>
+                <button data-modal-target="progress-rapot-modal" data-modal-toggle="progress-rapot-modal"
+                    class="button-download-rapot flex gap-2 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    type="button">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 13V4M7 14H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2m-1-5-4 5-4-5m9 8h.01" />
+                    </svg>
+                    Download Raport
+                </button>
+            </div>
             <button data-modal-target="progress-edit-modal" data-modal-toggle="progress-edit-modal"
                 class="hidden button-edit-open text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 type="button">
                 Edit Progress Ujian
             </button>
-        
+
             <button data-modal-target="progress-delete-modal" data-modal-toggle="progress-delete-modal"
                 class="hidden button-delete-open-progress text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 type="button">
                 Hapus Progress Ujian
             </button>
         </div>
-        
+
         <div class="alert-space-progress">
-        
+
         </div>
-        
-        
+
+
         <div id="table-progress-main" class="relative overflow-x-none shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right bg-white text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -1053,7 +1066,7 @@
                 <tbody id="table-body-progress">
                     <!-- table rows will be generated here -->
                 </tbody>
-        
+
                 <tbody id="skeleton-loader-table-progress">
                     <!-- Skeleton Loading Rows -->
                     <tr class="bg-white border-b animate-pulse">
@@ -1202,9 +1215,9 @@
         <div id="pagination-container-progress" class="flex flex-col items-center mt-4">
             <!-- Help text -->
             <span id="pagination-info-progress" class="text-sm text-gray-700">
-                Showing <span id="start-entry-progress" class="font-semibold text-gray-900">1</span> to <span id="end-entry-progress"
-                    class="font-semibold text-gray-900">10</span> of <span id="total-entries-progress"
-                    class="font-semibold text-gray-900">100</span> Entries
+                Showing <span id="start-entry-progress" class="font-semibold text-gray-900">1</span> to <span
+                    id="end-entry-progress" class="font-semibold text-gray-900">10</span> of <span
+                    id="total-entries-progress" class="font-semibold text-gray-900">100</span> Entries
             </span>
             <!-- Buttons -->
             <div class="inline-flex mt-2 xs:mt-0">
@@ -1219,7 +1232,7 @@
                 </button>
             </div>
         </div>
-        
+
         <div id="progress-modal" tabindex="-1" aria-hidden="true"
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative p-4 w-full max-w-md max-h-full">
@@ -1235,8 +1248,8 @@
                             data-modal-toggle="progress-modal">
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                             </svg>
                             <span class="sr-only">Close modal</span>
                         </button>
@@ -1245,7 +1258,8 @@
                     <div class="p-4 md:p-5 relative" id="addProgressUjian">
                         <div
                             class="loading-spinner hidden absolute inset-0 flex justify-center items-center bg-white bg-opacity-75 z-10">
-                            <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                            <svg aria-hidden="true"
+                                class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                                 viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
@@ -1272,7 +1286,8 @@
                                 </div>
                             </div>
                             <div class="col-span-2">
-                                <label for="IDUjianProgress" class="block mb-2 text-sm font-medium text-gray-900 ">Ujian</label>
+                                <label for="IDUjianProgress"
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Ujian</label>
                                 <select id="IDUjianProgress" name="IDUjian"
                                     class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 </select>
@@ -1290,7 +1305,8 @@
                                     placeholder="Nilai" required />
                             </div>
                             <div class="col-span-2">
-                                <label for="catatan" class="block mb-2 text-sm font-medium text-gray-900 ">Catatan</label>
+                                <label for="catatan"
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Catatan</label>
                                 <input type="text" id="catatan" name="catatan"
                                     class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                     placeholder="Catatan" required />
@@ -1310,7 +1326,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="progress-edit-modal" tabindex="-1" aria-hidden="true"
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative p-4 w-full max-w-md max-h-full">
@@ -1326,8 +1342,8 @@
                             data-modal-toggle="progress-edit-modal">
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                             </svg>
                             <span class="sr-only">Close modal</span>
                         </button>
@@ -1336,7 +1352,8 @@
                     <div class="p-4 md:p-5 relative" id="editProgressUjian">
                         <div
                             class="loading-spinner hidden absolute inset-0 flex justify-center items-center bg-white bg-opacity-75 z-10">
-                            <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                            <svg aria-hidden="true"
+                                class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                                 viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
@@ -1363,25 +1380,29 @@
                                 </div>
                             </div>
                             <div class="col-span-2">
-                                <label for="edit-IDUjianProgress" class="block mb-2 text-sm font-medium text-gray-900 ">Ujian</label>
+                                <label for="edit-IDUjianProgress"
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Ujian</label>
                                 <select id="edit-IDUjianProgress" name="IDUjian"
                                     class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 </select>
                             </div>
                             <div class="col-span-2">
-                                <label for="edit-IDUser" class="block mb-2 text-sm font-medium text-gray-900 ">Murid</label>
+                                <label for="edit-IDUser"
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Murid</label>
                                 <select id="edit-IDUser" name="IDUser"
                                     class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 </select>
                             </div>
                             <div class="col-span-2">
-                                <label for="edit-nilai" class="block mb-2 text-sm font-medium text-gray-900 ">Nilai</label>
+                                <label for="edit-nilai"
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Nilai</label>
                                 <input type="text" id="edit-nilai" name="nilai"
                                     class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                     placeholder="Nilai" required />
                             </div>
                             <div class="col-span-2">
-                                <label for="edit-catatan" class="block mb-2 text-sm font-medium text-gray-900 ">Catatan</label>
+                                <label for="edit-catatan"
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Catatan</label>
                                 <input type="text" id="edit-catatan" name="catatan"
                                     class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                     placeholder="Catatan" required />
@@ -1401,7 +1422,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="progress-delete-modal" tabindex="-1"
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative p-4 w-full max-w-md max-h-full">
@@ -1417,18 +1438,54 @@
                         <span class="sr-only">Close modal</span>
                     </button>
                     <div class="p-4 md:p-5 text-center">
-                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 20 20">
+                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
-                        <h3 class="mb-5 text-lg font-normal text-gray-500">Apakah kamu yakin ingin menghapus progress ujian ini?
+                        <h3 class="mb-5 text-lg font-normal text-gray-500">Apakah kamu yakin ingin menghapus progress
+                            ujian ini?
                         </h3>
                         <button data-modal-hide="progress-delete-modal" type="button"
                             class="delete-progress text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                             Ya, saya yakin
                         </button>
                         <button data-modal-hide="progress-delete-modal" type="button"
+                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+                            Jangan, batalkan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="progress-rapot-modal" tabindex="-1"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow">
+                    <button type="button"
+                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                        data-modal-hide="progress-rapot-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="p-4 md:p-5 text-center">
+                        <div class="col-span-2 mb-5">
+                            <label for="rapot-IDUser" class="block mb-2 text-sm font-medium text-gray-900 ">Pilih
+                                Murid</label>
+                            <select id="rapot-IDUser" name="IDUser"
+                                class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            </select>
+                        </div>
+                        <button data-modal-hide="progress-rapot-modal" type="button"
+                            class="rapot-generate text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                            Ya, saya yakin
+                        </button>
+                        <button data-modal-hide="progress-rapot-modal" type="button"
                             class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
                             Jangan, batalkan
                         </button>
@@ -2390,6 +2447,120 @@
             let id = $(this).data('id');
             openDeleteModalProgress(id);
         });
+
+        $(document).on('click', '.button-download-rapot', function() {
+            $.ajax({
+                url: "/api/users/",
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    let data = response["users: "];
+
+                    const selectElement = $('#rapot-IDUser');
+                    selectElement.empty(); // Clear existing options
+
+                    // Add a default "Pilih Tingkat Kelas" option
+                    selectElement.append('<option value="" selected>Pilih Murid</option>');
+
+                    // Populate new options
+                    data.forEach(user => {
+                        const optionText = `${user.nama}`;
+                        const optionValue = user.id;
+                        const option = `<option value="${optionValue}">${optionText}</option>`;
+                        selectElement.append(option);
+                    });
+                },
+                error: function(errors) {
+                    console.error(errors);
+                }
+            });
+
+            // downloadRaport();
+        });
+
+        $(document).on('click', '.rapot-generate', function() {
+            let id = $('#rapot-IDUser').val();
+            downloadRaport(id);
+        });
+
+        function downloadRaport(id) {
+            $.ajax({
+                url: "api/users/rapor/" + id,
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+
+                    let data = response['rapor: '];
+                    console.log(data[0].nama);
+                    // Proses data dan masukkan ke dalam template
+                    var props = {
+                        outputType: jsPDFInvoiceTemplate.OutputType.Save,
+                        returnJsPDFDocObject: true,
+                        fileName: "Invoice 2021",
+                        orientationLandscape: false,
+                        compress: true,
+                        logo: {
+                            src: "https://raw.githubusercontent.com/edisonneza/jspdf-invoice-template/demo/images/logo.png",
+                            type: 'PNG',
+                            width: 53.33,
+                            height: 26.66,
+                            margin: {
+                                top: 0,
+                                left: 0
+                            }
+                        },
+                        business: {
+                            name: "Santa Patricia",
+                            address: "Duta Garden",
+                            phone: "(+355) 069 11 11 111",
+                            email: "email@example.com",
+                            email_1: "info@example.al",
+                            website: "www.example.al",
+                        },
+                        contact: {
+                            label: "Raport untuk:",
+                            name: data[0].nama,
+                            email: data[0].email,
+                        },
+                        invoice: {
+                            label: "Raport UAS SEMS 2",
+                            headerBorder: false,
+                            tableBodyBorder: false,
+                            header: [
+                                { title: "#", style: { width: 10 } },
+                                { title: "Mata Pelajaran", style: { width: 30 } },
+                                { title: "Ujian", style: { width: 30 } },
+                                { title: "Tipe Ujian" },
+                                { title: "Nilai" },
+                                { title: "Catatan", style: { width: 80 } }
+                            ],
+                            table: data.map((item, index) => [
+                                index + 1,
+                                item.nama_mapel,
+                                item.nama_ujian,
+                                item.tipe_ujian,
+                                item.nilai,
+                                item.catatan
+                            ]),
+                            invDescLabel: "Catatan Rapot",
+                            invDesc: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.",
+                        },
+                        footer: {
+                            text: "The invoice is created on a computer and is valid without the signature and stamp.",
+                        },
+                        pageEnable: true,
+                        pageLabel: "Page ",
+                    };
+
+                    var pdfObject = jsPDFInvoiceTemplate.default(props);
+                },
+                error: function(errors) {
+                    console.error(errors);
+                }
+            });
+        }
 
         function openCreateModalProgress() {
             $('#addProgressUjian').find('.form-control').prop('disabled', true);
