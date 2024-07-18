@@ -5,6 +5,8 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -15,6 +17,22 @@ class UserController extends Controller
 
         return response()->json([
             'users: ' => $users,
+        ], 200);
+    }
+
+    public function rapor($id){
+        $rapor = User::join('progressujians', 'users.id', '=', 'progressujians.IDUser')
+        ->join('ujians', 'progressujians.IDUjian', '=', 'ujians.id')
+        ->join('matapelajarans', 'ujians.IDMataPelajaran', '=', 'matapelajarans.id')
+        ->join('kelases', 'users.IDKelas', '=', 'kelases.id')
+        ->where('users.id', '=', $id)
+        ->select('users.id', 'users.nama', 'users.email', 'matapelajarans.nama AS nama_mapel', 'ujians.nama AS nama_ujian', 'progressujians.nilai', 'progressujians.catatan',
+        DB::raw("SUBSTRING(ujians.nama, 1, 3) as tipe_ujian"))
+        ->get();
+
+
+        return response()->json([
+            'rapor: ' => $rapor,
         ], 200);
     }
 
