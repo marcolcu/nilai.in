@@ -31,7 +31,7 @@ class KelasController extends Controller
     }
 
     public function kelasSyncMateriByID(string $id){
-        $kelasMataPelajaran = Kelas::join('kelasdetails', 'kelases.id', '=', 'kelasdetails.IDKelas')
+        $kelasMateri = Kelas::join('kelasdetails', 'kelases.id', '=', 'kelasdetails.IDKelas')
         ->join('matapelajarans', 'matapelajarans.id', '=', 'kelasdetails.IDMataPelajaran')
         ->join('materis', 'matapelajarans.id', '=', 'materis.IDMataPelajaran')
         ->where('kelases.id', '=', $id)
@@ -39,7 +39,7 @@ class KelasController extends Controller
         ->get();
 
         return response()->json([
-            'kelasMataPelajaran: ' => $kelasMataPelajaran,
+            'kelasMateri: ' => $kelasMateri,
         ], 200);
     }
 
