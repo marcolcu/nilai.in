@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Kelas;
 use App\Models\MataPelajaran;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -43,6 +44,17 @@ class KelasController extends Controller
         ], 200);
     }
 
+    public function checkKelas(string $jurusan, string $tingkat){
+        $kelases = Kelas::all();
+
+        foreach ($kelases as $kelas) {
+            if ($jurusan == $kelas->jurusan && $tingkat == $kelas->tingkat) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public function store(Request $request){
         $input = $request->validate([
             'tingkat' => ['required'],
@@ -50,6 +62,11 @@ class KelasController extends Controller
             'wali' => ['required'],
             'ketua' => ['required'],
         ]);
+
+        if (!$this->checkKelas(strtolower($input['jurusan']), strtolower($input['tingkat']))) {
+            return response()->json(['Message' => 'We could not create the class as it already exists.'], 500);
+        }
+
         $kelas = new Kelas();
 
         $kelas->tingkat = $input['tingkat'];
