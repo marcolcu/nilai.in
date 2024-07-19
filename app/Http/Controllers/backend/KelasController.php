@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kelas;
+use App\Models\MataPelajaran;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -15,6 +16,30 @@ class KelasController extends Controller
 
         return response()->json([
             'kelases: ' => $kelases,
+        ], 200);
+    }
+
+    public function kelasSyncMataPelajaranByID(string $id){
+        $kelasMataPelajaran = Kelas::join('kelasdetails', 'kelases.id', '=', 'kelasdetails.IDKelas')
+        ->join('matapelajarans', 'matapelajarans.id', '=', 'kelasdetails.IDMataPelajaran')
+        ->where('kelases.id', '=', $id)
+        ->get();
+
+        return response()->json([
+            'kelasMataPelajaran: ' => $kelasMataPelajaran,
+        ], 200);
+    }
+
+    public function kelasSyncMateriByID(string $id){
+        $kelasMataPelajaran = Kelas::join('kelasdetails', 'kelases.id', '=', 'kelasdetails.IDKelas')
+        ->join('matapelajarans', 'matapelajarans.id', '=', 'kelasdetails.IDMataPelajaran')
+        ->join('materis', 'matapelajarans.id', '=', 'materis.IDMataPelajaran')
+        ->where('kelases.id', '=', $id)
+        ->select( 'kelasdetails.*', 'materis.id AS IDMateri', 'kelases.*', 'matapelajarans.*', 'materis.judul', 'materis.deskripsi AS deskripsi_materi', 'materis.konten', 'materis.tipe AS tipe_materi' )
+        ->get();
+
+        return response()->json([
+            'kelasMataPelajaran: ' => $kelasMataPelajaran,
         ], 200);
     }
 

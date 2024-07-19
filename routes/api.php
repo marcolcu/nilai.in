@@ -46,6 +46,8 @@ Route::controller(JawabanController::class)->group(function () {
 
 Route::controller(KelasController::class)->group(function () {
     Route::get('kelases', 'index');
+    Route::get('kelasMapel/{id}', 'kelasSyncMataPelajaranByID');
+    Route::get('kelasMateri/{id}', 'kelasSyncMateriByID');
     Route::post('kelases/create', 'store');
     Route::post('kelases/update/{id}', 'update');
     Route::get('kelases/read/{id}', 'show');
