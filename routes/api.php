@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(UserController::class)->group(function () {
     Route::get('users', 'index');
     Route::get('users/rapor/{id}', 'rapor');
+    Route::get('users/userNilai', 'userSyncProgressUjianDistinct');
     Route::post('users/update/{id}', 'update');
     Route::get('users/read/{id}', 'show');
     Route::get('users/delete/{id}', 'destroy');

@@ -2450,12 +2450,12 @@
 
         $(document).on('click', '.button-download-rapot', function() {
             $.ajax({
-                url: "/api/users/",
+                url: "/api/users/userNilai",
                 type: "GET",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(response) {
-                    let data = response["users: "];
+                    let data = response["userNilai: "];
 
                     const selectElement = $('#rapot-IDUser');
                     selectElement.empty(); // Clear existing options

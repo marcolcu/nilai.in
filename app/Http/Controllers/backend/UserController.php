@@ -36,6 +36,21 @@ class UserController extends Controller
         ], 200);
     }
 
+    public function userSyncProgressUjianDistinct(){
+        $userNilai = User::join('progressujians', 'users.id', '=', 'progressujians.IDUser')
+        ->join('ujians', 'progressujians.IDUjian', '=', 'ujians.id')
+        ->join('matapelajarans', 'ujians.IDMataPelajaran', '=', 'matapelajarans.id')
+        ->join('kelases', 'users.IDKelas', '=', 'kelases.id')
+        ->whereNotNull('progressujians.nilai')
+        ->select('users.*')
+        ->distinct()
+        ->get();
+
+        return response()->json([
+            'userNilai: ' => $userNilai,
+        ], 200);
+    }
+
     public function show(string $id){
         $user = user::find($id);
 
