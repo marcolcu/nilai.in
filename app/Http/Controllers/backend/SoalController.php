@@ -63,7 +63,7 @@ class SoalController extends Controller
     }
 
     public function soalSyncByIDUjian(string $id){
-        $soalUjian = Soal::join('ujians', 'soals.IDUjian', '=', 'ujians.id')
+        $soalUjianByID = Soal::join('ujians', 'soals.IDUjian', '=', 'ujians.id')
         ->join('matapelajarans', 'matapelajarans.id', '=', 'ujians.IDMataPelajaran')
         ->select('soals.pertanyaan AS pertanyaan', 'soals.pilihan1 AS pilihan1', 'soals.pilihan2 AS pilihan2', 'soals.pilihan3 AS pilihan3',
         'soals.pilihan4 AS pilihan4', 'soals.pilihan5 AS pilihan5', 'soals.kunci AS kunci', 'ujians.nama AS nama_ujian', 'ujians.deskripsi AS deskripsi_ujian',
@@ -72,7 +72,7 @@ class SoalController extends Controller
         ->get();
 
         return response()->json([
-            'soalUjian: ' => $soalUjian,
+            'soalUjianByID: ' => $soalUjianByID,
         ], 200);
     }
 

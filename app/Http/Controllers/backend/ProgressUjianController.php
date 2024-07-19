@@ -31,6 +31,19 @@ class ProgressUjianController extends Controller
         ], 200);
     }
 
+    public function progressUjianSyncUjianByUjianID(string $id){
+        $progressUjianbyID = ProgressUjian::join('ujians', 'ujians.id', '=', 'progressujians.IDUjian')
+        ->join('users', 'users.id', '=', 'progressujians.IDUser')
+        ->select('progressujians.*', 'users.nama AS nama_murid','users.email AS email','users.peran AS peran',
+        'ujians.nama AS nama_ujian', 'ujians.deskripsi AS deskripsi_ujian', 'ujians.kkm AS kkm_ujian')
+        ->where('ujians.id', '=', $id)
+        ->get();
+
+        return response()->json([
+            'progressUjianbyID: ' => $progressUjianbyID,
+        ], 200);
+    }
+
     public function store(Request $request){
         $input = $request->validate([
             'IDUjian' => ['required'],
