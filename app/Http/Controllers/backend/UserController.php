@@ -60,7 +60,6 @@ class UserController extends Controller
                 'email' => ['required'],
                 'password' => ['required'],
                 'peran' => ['required'],
-                'IDKelas' => ['required'],
             ]);
 
             $users = User::all();
@@ -76,7 +75,7 @@ class UserController extends Controller
             $user->nama = $input['nama'];
             $user->peran = $input['peran'];
             $user->password = bcrypt($input['password']);
-            $user->IDKelas = $input['IDKelas'];
+            $user->IDKelas = $request->IDKelas;
 
             if ($user->save()){
                 return response()->json([
