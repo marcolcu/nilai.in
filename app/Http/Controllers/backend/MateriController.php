@@ -29,6 +29,17 @@ class MateriController extends Controller
         ], 200);
     }
 
+    public function materiSyncMataPelajaranByID(string $id){
+        $materiMataPelajaranByID = Materi::join('matapelajarans', 'materis.IDMataPelajaran', '=', 'matapelajarans.id')
+        ->select('matapelajarans.nama AS mapel', 'matapelajarans.deskripsi AS deskripsi_mapel', 'materis.*')
+        ->where('matapelajarans.id', '=', $id)
+        ->get();
+
+        return response()->json([
+            '$materiMataPelajaranByID: ' => $materiMataPelajaranByID,
+        ], 200);
+    }
+
     public function store(Request $request){
         $input = $request->validate([
             'judul' => ['required'],
