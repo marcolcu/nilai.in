@@ -84,6 +84,7 @@ Route::controller(ProgressUjianController::class)->group(function () {
 Route::controller(SoalController::class)->group(function () {
     Route::get('soals', 'index');
     Route::get('soalUjian', 'soalSyncUjian');
+    Route::get('soalUjianByID/{id}', 'soalSyncByIDUjian');
     Route::post('soals/create', 'store');
     Route::post('soals/update/{id}', 'update');
     Route::get('soals/read/{id}', 'show');
