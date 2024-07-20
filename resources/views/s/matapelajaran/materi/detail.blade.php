@@ -142,7 +142,7 @@
                         $('#deskripsi-materi').append(deskripsi);
 
                         if (videoUrl) {
-                            if (tipe === 'Video') {
+                            if (tipe === 'video') {
                                 // Ekstrak ID video dari URL yang diberikan oleh API
                                 const videoId = new URLSearchParams(new URL(videoUrl).search).get('v');
                                 const embedUrl = `https://www.youtube.com/embed/${videoId}?controls=1`;
