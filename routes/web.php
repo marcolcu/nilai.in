@@ -7,10 +7,9 @@ use App\Http\Controllers\frontend\KursusController;
 use App\Http\Controllers\frontend\LectureController;
 use App\Http\Controllers\frontend\MataPelajaranController;
 use App\Http\Controllers\frontend\MateriController;
-use App\Http\Controllers\frontend\ProgressUjianController;
-use App\Http\Controllers\frontend\SoalController;
+use App\Http\Controllers\frontend\ProfileController;
+use App\Http\Controllers\frontend\student\HomeController;
 use App\Http\Controllers\frontend\UjianController;
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +33,7 @@ Route::middleware(['auth', 'guru'])->group(function () {
     Route::get('/matapelajaran', [MataPelajaranController::class, 'index']);
     Route::get('/materi', [MateriController::class, 'index']);
     Route::get('/ujian', [UjianController::class, 'index']);
-    // Route::get('/soal', [SoalController::class, 'index']);
+    Route::get('/profile', [ProfileController::class, 'index']);
     // Route::get('/progressujian', [ProgressUjianController::class, 'index']);
 
 
@@ -43,8 +42,11 @@ Route::middleware(['auth', 'guru'])->group(function () {
     });
 });
 
-Route::middleware(['auth', 'murid'])->group(function () {
+Route::prefix('s')->middleware(['auth', 'murid'])->group(function () {
     Route::get('/home', [HomeController::class, 'index']);
+    Route::get('/matapelajaran', [\App\Http\Controllers\frontend\student\MataPelajaranController::class, 'index']);
+    Route::get('/materi/{id}', [\App\Http\Controllers\frontend\student\MateriController::class, 'index']);
+    Route::get('/materi/detail/{id}', [\App\Http\Controllers\frontend\student\MateriController::class, 'detail']);
 });
 
 Route::get('/login', [AuthController::class, 'getLogin']);

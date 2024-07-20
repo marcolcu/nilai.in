@@ -62,7 +62,7 @@
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
         <ul class="space-y-2 font-medium">
             <li>
-                <a href="/dashboard" role="button"
+                <a href="/s/home" role="button"
                     class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -76,31 +76,11 @@
                 </a>
             </li>
             <li>
-                <a href="/kelas" role="button"
+                <a href="/s/matapelajaran" role="button"
                     class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                             aria-hidden="true" class="w-5 h-5">
-                            <path fill-rule="evenodd"
-                                d="M6.912 3a3 3 0 00-2.868 2.118l-2.411 7.838a3 3 0 00-.133.882V18a3 3 0 003 3h15a3 3 0 003-3v-4.162c0-.299-.045-.596-.133-.882l-2.412-7.838A3 3 0 0017.088 3H6.912zm13.823 9.75l-2.213-7.191A1.5 1.5 0 0017.088 4.5H6.912a1.5 1.5 0 00-1.434 1.059L3.265 12.75H6.11a3 3 0 012.684 1.658l.256.513a1.5 1.5 0 001.342.829h3.218a1.5 1.5 0 001.342-.83l.256-.512a3 3 0 012.684-1.658h2.844z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    Kelas
-                    {{-- <div class="grid ml-auto place-items-center justify-self-end">
-                        <div
-                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-full select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900">
-                            <span class="">14</span>
-                        </div>
-                    </div> --}}
-                </a>
-            </li>
-            <li>
-                <a href="/matapelajaran" role="button"
-                    class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-                    <div class="grid mr-4 place-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                            class="w-5 h-5">
                             <path fill-rule="evenodd"
                                 d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
                                 clip-rule="evenodd"></path>
@@ -110,8 +90,8 @@
                 </a>
             </li>
             <li>
-                <a href="/materi" role="button"
-                    class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                <a href="#" role="button"
+                    class="materi-notif flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                             aria-hidden="true" class="w-5 h-5">
@@ -121,6 +101,12 @@
                         </svg>
                     </div>
                     Materi
+                    <div class="grid ml-auto place-items-center justify-self-end">
+                        <div
+                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-full select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900">
+                            <span class="new-materi"></span>
+                        </div>
+                    </div>
                 </a>
             </li>
             <li>
@@ -137,34 +123,6 @@
                     Ujian
                 </a>
             </li>
-            {{-- <li>
-                <a href="/soal" role="button"
-                    class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-                    <div class="grid mr-4 place-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            aria-hidden="true" class="w-5 h-5">
-                            <path fill-rule="evenodd"
-                                d="M2.25 4.5A3.25 3.25 0 015.5 1.25h13a3.25 3.25 0 013.25 3.25v11a3.25 3.25 0 01-3.25 3.25h-4.393l-2.866 2.974a.75.75 0 01-1.082 0L7.893 18.5H5.5a3.25 3.25 0 01-3.25-3.25v-11zm3.25-.75a.75.75 0 00-.75.75v11c0 .966.784 1.75 1.75 1.75h2.607a.75.75 0 01.541.23L12 19.568l2.602-2.838a.75.75 0 01.542-.23H18.5c.966 0 1.75-.784 1.75-1.75v-11a.75.75 0 00-.75-.75h-13z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    Soal
-                </a>
-            </li>
-            <li>
-                <a href="/progressujian" role="button"
-                    class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-                    <div class="grid mr-4 place-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            aria-hidden="true" class="w-5 h-5">
-                            <path fill-rule="evenodd"
-                                d="M2.25 4.5A3.25 3.25 0 015.5 1.25h13a3.25 3.25 0 013.25 3.25v11a3.25 3.25 0 01-3.25 3.25h-4.393l-2.866 2.974a.75.75 0 01-1.082 0L7.893 18.5H5.5a3.25 3.25 0 01-3.25-3.25v-11zm3.25-.75a.75.75 0 00-.75.75v11c0 .966.784 1.75 1.75 1.75h2.607a.75.75 0 01.541.23L12 19.568l2.602-2.838a.75.75 0 01.542-.23H18.5c.966 0 1.75-.784 1.75-1.75v-11a.75.75 0 00-.75-.75h-13z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    Progress Ujian
-                </a>
-            </li> --}}
         </ul>
     </div>
 </aside>

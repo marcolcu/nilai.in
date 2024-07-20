@@ -50,7 +50,12 @@
 
 
     </div>
+
+    @if (auth()->user()->peran == 'guru' || auth()->user()->peran == 'walikelas')
     <x-sidebar />
+    @else
+    <x-student-sidebar />
+    @endif
     <div class="p-4 sm:ml-64 w-full">
         <div class="p-4 mt-14">
             @yield('content')

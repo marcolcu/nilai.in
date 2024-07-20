@@ -31,7 +31,7 @@ class AuthController extends Controller
                 return redirect("/dashboard");
             }
             else{
-                return redirect("/home");
+                return redirect("/s/home");
             }
         } else {
             return redirect()->back()->withErrors('Authentication Error');
@@ -71,7 +71,12 @@ class AuthController extends Controller
         $user->save();
 
         Auth::attempt(['email' => $request->email, 'password' => $request->password]);
-        return redirect("/dashboard")->with('success', 'Successfully Registered.');
+
+        if ($user->peran == "guru" || $user->peran == "admin") {
+            return redirect("/dashboard")->with('success', 'Successfully Registered.');
+        } else {
+            return redirect("/s/home")->with('success', 'Successfully Registered.');
+        }
     }
 
 
