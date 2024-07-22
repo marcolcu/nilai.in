@@ -27,7 +27,7 @@ class AuthController extends Controller
         ]);
 
         if ($valid) {
-            if (auth()->user()->peran == "guru" || auth()->user()->peran == "admin") {
+            if (auth()->user()->peran == "guru" || auth()->user()->peran == "admin" || auth()->user()->peran == "wali kelas") {
                 return redirect("/dashboard");
             }
             else{
@@ -72,7 +72,7 @@ class AuthController extends Controller
 
         Auth::attempt(['email' => $request->email, 'password' => $request->password]);
 
-        if ($user->peran == "guru" || $user->peran == "admin") {
+        if ($user->peran == "guru" || $user->peran == "admin" || $user->peran == "wali kelas") {
             return redirect("/dashboard")->with('success', 'Successfully Registered.');
         } else {
             return redirect("/s/home")->with('success', 'Successfully Registered.');
