@@ -13,9 +13,10 @@
                         </path>
                     </svg>
                 </button>
-                <a href="https://flowbite.com" class="flex ms-2 md:me-24">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">Flowbite</span>
+                <a href="/" class="flex ms-2 md:me-24">
+                    <img class="w-13 h-10 pr-2"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKop8tb6J3XdctroilOgUB_l2P0KVmYpmdXg&s" alt="logo">
+                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">SMA Santa Patricia</span>
                 </a>
             </div>
             <div class="flex items-center">

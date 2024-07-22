@@ -13,9 +13,10 @@
                         </path>
                     </svg>
                 </button>
-                <a href="https://flowbite.com" class="flex ms-2 md:me-24">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">Flowbite</span>
+                <a href="/" class="flex ms-2 md:me-24">
+                    <img class="w-13 h-10 pr-2"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKop8tb6J3XdctroilOgUB_l2P0KVmYpmdXg&s" alt="logo">
+                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">SMA Santa Patricia</span>
                 </a>
             </div>
             <div class="flex items-center">
@@ -89,27 +90,7 @@
                     Mata Pelajaran
                 </a>
             </li>
-            <li>
-                <a href="#" role="button"
-                    class="materi-notif flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-                    <div class="grid mr-4 place-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            aria-hidden="true" class="w-5 h-5">
-                            <path fill-rule="evenodd"
-                                d="M6.25 1.5a.75.75 0 01.75.75v.25h10V2.25a.75.75 0 011.5 0v.25h.25A3.75 3.75 0 0122 6.25v12.5A3.75 3.75 0 0118.25 22H5.75A3.75 3.75 0 012 18.75V6.25A3.75 3.75 0 015.75 2.5h.25V2.25a.75.75 0 01.75-.75zM3.5 8v10.75A2.25 2.25 0 005.75 21h12.5a2.25 2.25 0 002.25-2.25V8H3.5zM8 4.5h8V6a.75.75 0 01-.75.75h-6.5A.75.75 0 018 6V4.5z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    Materi
-                    <div class="grid ml-auto place-items-center justify-self-end">
-                        <div
-                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-full select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900">
-                            <span class="new-materi"></span>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li>
+            {{-- <li>
                 <a href="/ujian" role="button"
                     class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
                     <div class="grid mr-4 place-items-center">
@@ -122,7 +103,7 @@
                     </div>
                     Ujian
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </aside>

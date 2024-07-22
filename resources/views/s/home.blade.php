@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div class="mb-5 flex justify-between items-center gap-2">
+<div class="mb-5 flex flex-col sm:flex-row justify-between items-center items-stretch gap-2">
     <div class="w-full">
         <a href="#"
             class="mapel-card hidden w-full p-6 bg-yellow-200 border border-gray-200 rounded-lg shadow hover:bg-yellow-400 transition duration-300 ease-in-out">

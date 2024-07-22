@@ -28,9 +28,9 @@
             <section id="loginData">
                 <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                     <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 ">
-                        <img class="w-11 h-6 mr-2" src="https://w7.pngwing.com/pngs/683/964/png-transparent-grading-in-education-test-computer-icons-student-score-miscellaneous-text-logo.png"
+                        <img class="w-13 h-10 pr-2" src="https://lh4.googleusercontent.com/Z5-KXpJETVaJ_nhGLzHK9-qMOzfCqs1-V4H23mxoFmFg1xWJLOyG3tgANq33zjVqG5kkfzOV9gNNqdbgz5c1pj4=w16383"
                             alt="logo">
-                        Nilai.in
+                        SMA Santa Patricia
                     </a>
                     <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
                         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
