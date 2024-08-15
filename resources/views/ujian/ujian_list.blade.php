@@ -51,7 +51,7 @@
 
         <div class="alert-space-ujian"></div>
 
-        <div id="table-ujian-main" class="relative overflow-x-none shadow-md sm:rounded-lg">
+        <div id="table-ujian-main" class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right bg-white text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
@@ -501,7 +501,7 @@
         </div>
 
 
-        <div id="table-soal-main" class="relative overflow-x-none shadow-md sm:rounded-lg">
+        <div id="table-soal-main" class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right bg-white text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
@@ -996,7 +996,7 @@
         </div>
     </div>
     <div class="hidden p-4 rounded-lg bg-gray-50" id="progress" role="tabpanel" aria-labelledby="progress-tab">
-        <div class="mb-10 flex justify-between items-center">
+        <div class="mb-10 flex flex-col sm:flex-row justify-between items-center gap-2">
             <h1 class="font-bold text-2xl">List Progress Ujian</h1>
             <div class="flex gap-2">
                 <button data-modal-target="progress-modal" data-modal-toggle="progress-modal"
@@ -1039,7 +1039,7 @@
         </div>
 
 
-        <div id="table-progress-main" class="relative overflow-x-none shadow-md sm:rounded-lg">
+        <div id="table-progress-main" class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right bg-white text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>

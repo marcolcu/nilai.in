@@ -23,7 +23,7 @@
 
 
 <div id="main-content-dashboard-card" class="hidden">
-    <div class="mb-5 flex justify-between items-center">
+    <div class="mb-5 flex justify-between items-center flex-col sm:flex-row gap-2">
         <a href="#"
             class="block max-w-sm w-full p-6 bg-orange-200 border border-gray-200 rounded-lg shadow hover:bg-orange-400 transition duration-300 ease-in-out">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">120

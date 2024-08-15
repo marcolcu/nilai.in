@@ -31,7 +31,7 @@
 </div>
 
 
-<div id="table-user-main" class="relative overflow-x-none shadow-md sm:rounded-lg">
+<div id="table-user-main" class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right bg-white text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>

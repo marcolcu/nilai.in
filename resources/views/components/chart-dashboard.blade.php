@@ -5,7 +5,7 @@
     <div class="skeleton bg-gray-300 bg-opacity-50 animate-pulse h-5 w-1/5"></div>
 </div>
 
-<div id="main-content" class="w-[45%] bg-white rounded-lg shadow p-4 md:p-6 hidden">
+<div id="main-content" class="w-full md:w-[45%] flex gap-2 bg-white rounded-lg shadow p-4 md:p-6 hidden">
     <div class="flex justify-between">
         <div>
             <h5 class="leading-none text-3xl font-bold text-gray-900  pb-2">32.4k</h5>
