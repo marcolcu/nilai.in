@@ -271,9 +271,7 @@
                         <select id="tingkat" name="tingkat"
                             class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option value="" selected>Pilih Tingkat</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
+                            <option value="Basic">Basic</option>
                         </select>
                     </div>
                     <div class="col-span-2">
@@ -281,8 +279,7 @@
                         <select id="IDKelas" name="IDKelas"
                             class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option value="" selected>Pilih Jurusan</option>
-                            <option value="IPA">IPA</option>
-                            <option value="IPS">IPS</option>
+                            <option value="2nd">2nd</option>
                         </select>
                     </div>
                     <div class="col-span-2">
@@ -369,9 +366,7 @@
                         <select id="edit-tingkat" name="tingkat"
                             class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option value="" selected>Pilih Tingkat</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
+                            <option value="Basic">Basic</option>
                         </select>
                     </div>
                     <div class="col-span-2">
@@ -379,8 +374,7 @@
                         <select id="edit-jurusan" name="jurusan"
                             class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option value="" selected>Pilih Jurusan</option>
-                            <option value="IPA">IPA</option>
-                            <option value="IPS">IPS</option>
+                            <option value="2nd">2nd</option>
                         </select>
                     </div>
                     <div class="col-span-2">
@@ -448,7 +442,7 @@
         var currentPage = 1;
         var entriesPerPage = 10;
         var totalEntries = 0;
-        
+
         $('#skeleton-loader-table-user').show();
         $('#table-body-user').hide();
         $('#pagination-container').hide();
@@ -612,7 +606,7 @@
                 }
             });
         }
-        
+
         function openEditModal(id) {
             $('#editMapel').find('.form-control').prop('disabled', true);
             $('.loading-spinner').removeClass('hidden');
@@ -631,7 +625,7 @@
                         if(inputName === "jurusan") {
                             inputValue = inputValue.toUpperCase();
                         }
-                        
+
                         $("#" + $(this).attr('id')).val(inputValue);
                     });
 
@@ -647,7 +641,7 @@
         var currentPage = 1;
         var entriesPerPage = 10;
         var allData = [];
-        
+
         function table_matapelajaran() {
             $('#skeleton-loader-table-user').show();
             $('#table-body-user').hide();
@@ -738,18 +732,18 @@
         function updatePaginationInfo(page, totalEntries) {
             var startEntry = (page - 1) * entriesPerPage + 1;
             var endEntry = Math.min(startEntry + entriesPerPage - 1, totalEntries);
-            
+
             $('#start-entry').text(startEntry);
             $('#end-entry').text(endEntry);
             $('#total-entries').text(totalEntries);
-            
+
             // Enable/disable buttons
             if (page === 1) {
                 $('#prev-button').prop('disabled', true);
             } else {
                 $('#prev-button').prop('disabled', false);
             }
-            
+
             if (endEntry >= totalEntries) {
                 $('#next-button').prop('disabled', true);
             } else {
@@ -793,7 +787,7 @@
                 }
             });
         }
-        
+
         // Event listeners for pagination buttons
         $('#prev-button').on('click', function() {
             if (currentPage > 1) {
@@ -802,13 +796,13 @@
                 updatePaginationInfo(currentPage, allData.length);
             }
         });
-        
+
         $('#next-button').on('click', function() {
             if ((currentPage * entriesPerPage) < allData.length) {
                 currentPage++;
                 renderTable(currentPage);
-                updatePaginationInfo(currentPage, allData.length); 
-            } 
+                updatePaginationInfo(currentPage, allData.length);
+            }
         });
     });
 </script>

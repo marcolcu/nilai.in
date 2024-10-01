@@ -46,6 +46,7 @@ class AuthController extends Controller
             'nama'  => 'required',
             'peran'  => 'required',
             'password' => ['required', 'string', 'min:6', 'regex:/[0-9]/', 'confirmed'],
+            'IDKelas' => 'nullable',
         ];
         $kelases = Kelas::all();
 

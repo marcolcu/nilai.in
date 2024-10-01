@@ -10,7 +10,7 @@ class SoalController extends Controller
 {
     //
     public function index(){
-  
+
         $soals = Soal::all();
 
         return response()->json([
@@ -23,7 +23,7 @@ class SoalController extends Controller
         ->join('matapelajarans', 'matapelajarans.id', '=', 'ujians.IDMataPelajaran')
         ->select('soals.pertanyaan AS pertanyaan', 'soals.pilihan1 AS pilihan1', 'soals.pilihan2 AS pilihan2', 'soals.pilihan3 AS pilihan3',
         'soals.pilihan4 AS pilihan4', 'soals.pilihan5 AS pilihan5', 'soals.kunci AS kunci', 'ujians.nama AS nama_ujian', 'ujians.deskripsi AS deskripsi_ujian',
-        'ujians.kkm AS kkm_ujian', 'matapelajarans.nama AS nama_mapel', 'matapelajarans.deskripsi AS deskripsi_mapel')
+        'ujians.kkm AS kkm_ujian', 'matapelajarans.nama AS nama_mapel', 'matapelajarans.deskripsi AS deskripsi_mapel', 'soals.id AS id')
         ->get();
 
         return response()->json([
@@ -67,7 +67,7 @@ class SoalController extends Controller
         ->join('matapelajarans', 'matapelajarans.id', '=', 'ujians.IDMataPelajaran')
         ->select('soals.pertanyaan AS pertanyaan', 'soals.pilihan1 AS pilihan1', 'soals.pilihan2 AS pilihan2', 'soals.pilihan3 AS pilihan3',
         'soals.pilihan4 AS pilihan4', 'soals.pilihan5 AS pilihan5', 'soals.kunci AS kunci', 'ujians.nama AS nama_ujian', 'ujians.deskripsi AS deskripsi_ujian',
-        'ujians.kkm AS kkm_ujian', 'matapelajarans.nama AS nama_mapel', 'matapelajarans.deskripsi AS deskripsi_mapel')
+        'ujians.kkm AS kkm_ujian', 'matapelajarans.nama AS nama_mapel', 'matapelajarans.deskripsi AS deskripsi_mapel', 'soals.id AS id')
         ->where('ujians.id', '=', $id)
         ->get();
 

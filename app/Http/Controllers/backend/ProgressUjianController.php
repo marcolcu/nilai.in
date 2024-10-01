@@ -10,7 +10,7 @@ class ProgressUjianController extends Controller
 {
     //
     public function index(){
-  
+
         $progressujians = ProgressUjian::all();
 
         return response()->json([
@@ -48,14 +48,13 @@ class ProgressUjianController extends Controller
         $input = $request->validate([
             'IDUjian' => ['required'],
             'nilai' => ['required'],
-            'catatan' => ['required'],
             'IDUser' => ['required'],
         ]);
         $progressujian = new ProgressUjian();
 
         $progressujian->IDUjian = $input['IDUjian'];
         $progressujian->nilai = $input['nilai'];
-        $progressujian->catatan = $input['catatan'];
+        $progressujian->catatan = $request->catatan;
         $progressujian->IDUser = $input['IDUser'];
 
         if ($progressujian->save()){
@@ -95,7 +94,7 @@ class ProgressUjianController extends Controller
                 'catatan' => ['required'],
                 'IDUser' => ['required'],
             ]);
-                
+
             $progressujian->IDUjian = $input['IDUjian'];
             $progressujian->nilai = $input['nilai'];
             $progressujian->catatan = $input['catatan'];

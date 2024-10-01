@@ -7,6 +7,8 @@
 
     <title>Nilai.in</title>
 
+    <link rel="icon" href="{{ asset('joy.png') }}" type="image/x-icon">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -51,7 +53,7 @@
 
     </div>
 
-    @if (auth()->user()->peran == 'guru' || auth()->user()->peran == 'walikelas')
+    @if (auth()->user()->peran == 'guru' || auth()->user()->peran == 'walikelas' || auth()->user()->peran == 'admin')
     <x-sidebar />
     @else
     <x-student-sidebar />

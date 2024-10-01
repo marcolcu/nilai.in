@@ -15,8 +15,8 @@
                 </button>
                 <a href="/" class="flex ms-2 md:me-24">
                     <img class="w-13 h-10 pr-2"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKop8tb6J3XdctroilOgUB_l2P0KVmYpmdXg&s" alt="logo">
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">SMA Santa Patricia</span>
+                        src="{{ asset("joy.png") }}" alt="logo">
+                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">Joy English Education Center</span>
                 </a>
             </div>
             <div class="flex items-center">
@@ -90,8 +90,8 @@
                     Mata Pelajaran
                 </a>
             </li>
-            {{-- <li>
-                <a href="/ujian" role="button"
+             <li>
+                <a href="/s/ujian" role="button"
                     class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -103,7 +103,7 @@
                     </div>
                     Ujian
                 </a>
-            </li> --}}
+            </li>
         </ul>
     </div>
 </aside>

@@ -270,9 +270,7 @@
                             <select id="tingkat" name="tingkat"
                                 class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option value="" selected>Pilih Tingkat Kelas</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
+                                <option value="Basic">Basic</option>
                             </select>
                         </div>
                         <div class="col-span-2">
@@ -280,8 +278,7 @@
                             <select id="jurusan" name="jurusan"
                                 class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option value="" selected>Pilih Jurusan</option>
-                                <option value="ipa">IPA</option>
-                                <option value="ips">IPS</option>
+                                <option value="2nd">2nd</option>
                             </select>
                         </div>
                         <div class="col-span-2">
@@ -289,8 +286,7 @@
                             <select id="wali" name="wali"
                                 class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option value="" selected>Pilih Wali Kelas</option>
-                                <option value="bu hot">Bu Hot</option>
-                                <option value="pak made">Pak Made</option>
+                                <option value="anthony">Anthony</option>
                             </select>
                         </div>
                         <div class="col-span-2">
@@ -298,8 +294,7 @@
                             <select id="ketua" name="ketua"
                                 class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option value="" selected>Pilih Ketua Kelas</option>
-                                <option value="fabian">Fabian</option>
-                                <option value="cristopher">Cristopher</option>
+                                <option value="anthony">Anthony</option>
                             </select>
                         </div>
                     </div>
@@ -377,9 +372,7 @@
                         <select id="edit-tingkat" name="tingkat"
                             class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option value="" selected>Pilih Tingkat Kelas</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
+                            <option value="Basic">Basic</option>
                         </select>
                     </div>
                     <div class="col-span-2">
@@ -388,8 +381,7 @@
                         <select id="edit-jurusan" name="jurusan"
                             class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option value="" selected>Pilih Jurusan</option>
-                            <option value="ipa">IPA</option>
-                            <option value="ips">IPS</option>
+                            <option value="2nd">2nd</option>
                         </select>
                     </div>
                     <div class="col-span-2">
@@ -398,8 +390,7 @@
                         <select id="edit-wali" name="wali"
                             class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option value="" selected>Pilih Wali Kelas</option>
-                            <option value="bu hot">Bu Hot</option>
-                            <option value="pak made">Pak Made</option>
+                            <option value="anthony">Anthony</option>
                         </select>
                     </div>
                     <div class="col-span-2">
@@ -408,8 +399,7 @@
                         <select id="edit-ketua" name="ketua"
                             class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option value="" selected>Pilih Ketua Kelas</option>
-                            <option value="fabian">Fabian</option>
-                            <option value="cristopher">Cristopher</option>
+                            <option value="anthony">Anthony</option>
                         </select>
                     </div>
                 </div>
@@ -469,7 +459,7 @@
         var currentPage = 1;
         var entriesPerPage = 10;
         var totalEntries = 0;
-        
+
         $('#skeleton-loader-table-user').show();
         $('#table-body-user').hide();
         $('#pagination-container').hide();
@@ -654,7 +644,7 @@
                 }
             });
         }
-        
+
         function openEditModal(id) {
             $('#editKelases').find('.form-control').prop('disabled', true);
             $('.loading-spinner').removeClass('hidden');
@@ -668,7 +658,7 @@
                     $('#editKelases').find('.form-control').each(function() {
                         const inputName = $(this).attr('name');
                         const inputValue = response["Kelas: "][inputName];
-                        
+
                         $("#" + $(this).attr('id')).val(inputValue);
                     });
 
@@ -685,7 +675,7 @@
         var currentPage = 1;
         var entriesPerPage = 10;
         var allData = [];
-        
+
         function table_kelases() {
             $('#skeleton-loader-table-user').show();
             $('#table-body-user').hide();
@@ -735,13 +725,13 @@
                 }
             });
         }
-        
+
         function renderTable(page) {
             $('#table-body-user').empty();
             var start = (page - 1) * entriesPerPage;
             var end = start + entriesPerPage;
             var paginatedData = allData.slice(start, end);
-            
+
             $.each(paginatedData, function(index, item) {
             var row = `
             <tr>
@@ -777,29 +767,29 @@
             $('#table-body-user').append(row);
             });
         }
-        
+
         function updatePaginationInfo(page, totalEntries) {
             var startEntry = (page - 1) * entriesPerPage + 1;
             var endEntry = Math.min(startEntry + entriesPerPage - 1, totalEntries);
-            
+
             $('#start-entry').text(startEntry);
             $('#end-entry').text(endEntry);
             $('#total-entries').text(totalEntries);
-            
+
             // Enable/disable buttons
             if (page === 1) {
                 $('#prev-button').prop('disabled', true);
             } else {
                 $('#prev-button').prop('disabled', false);
             }
-            
+
             if (endEntry >= totalEntries) {
                 $('#next-button').prop('disabled', true);
             } else {
                 $('#next-button').prop('disabled', false);
             }
         }
-        
+
         // Event listeners for pagination buttons
         $('#prev-button').on('click', function() {
             if (currentPage > 1) {
@@ -808,13 +798,13 @@
                 updatePaginationInfo(currentPage, allData.length);
             }
         });
-        
+
         $('#next-button').on('click', function() {
             if ((currentPage * entriesPerPage) < allData.length) {
                 currentPage++;
                 renderTable(currentPage);
-                updatePaginationInfo(currentPage, allData.length); 
-            } 
+                updatePaginationInfo(currentPage, allData.length);
+            }
         });
     });
 </script>

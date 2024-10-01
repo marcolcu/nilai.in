@@ -47,6 +47,8 @@ Route::prefix('s')->middleware(['auth', 'murid'])->group(function () {
     Route::get('/matapelajaran', [\App\Http\Controllers\frontend\student\MataPelajaranController::class, 'index']);
     Route::get('/materi/{id}', [\App\Http\Controllers\frontend\student\MateriController::class, 'index']);
     Route::get('/materi/detail/{id}', [\App\Http\Controllers\frontend\student\MateriController::class, 'detail']);
+    Route::get('/ujian', [\App\Http\Controllers\frontend\student\UjianController::class, 'index']);
+    Route::get('/ujian/{id}', [\App\Http\Controllers\frontend\student\UjianController::class, 'detail']);
 });
 
 Route::get('/login', [AuthController::class, 'getLogin']);
